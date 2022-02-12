@@ -8,6 +8,7 @@ var rolled_numbers = []
 var initial_dice_positions = []
 
 func _ready():
+	randomize()
 	$Music.play()
 	for dice in $Dices.get_children():
 		initial_dice_positions.append(dice.global_transform.origin)
