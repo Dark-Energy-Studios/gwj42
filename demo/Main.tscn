@@ -41,7 +41,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0122157, -0.0153327, 0.00143
 mesh = SubResource( 1 )
 material/0 = SubResource( 3 )
 
-[node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
+[node name="CollisionShape" type="CollisionShape" parent="Table"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0189255, 0 )
 shape = SubResource( 2 )
 
