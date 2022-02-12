@@ -2,7 +2,7 @@
 
 [ext_resource path="res://demo/assets/fields.tres" type="MeshLibrary" id=1]
 
-[node name="Board" type="StaticBody"]
+[node name="StaticBody" type="StaticBody"]
 
 [node name="GridMap" type="GridMap" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.526, -0.429, 0 )
@@ -13,5 +13,5 @@ data = {
 }
 __meta__ = {
 "_editor_clip_": 0,
-"_editor_floor_": Vector3( 0, -1, 0 )
+"_editor_floor_": Vector3( 0, 0, 0 )
 }

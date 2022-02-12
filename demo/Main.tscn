@@ -37,7 +37,7 @@ transform = Transform( 0.114476, -0.958708, 0.260334, 0.801243, 0.244024, 0.5463
 transform = Transform( 5.787, 0, 0, 0, 1, 0, 0, 0, 5.114, 0, -0.483, 0 )
 
 [node name="MeshInstance" type="MeshInstance" parent="StaticBody"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0122157, 0.0187068, 0.00143322 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0122157, -0.0153327, 0.00143322 )
 mesh = SubResource( 1 )
 material/0 = SubResource( 3 )
 
