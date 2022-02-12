@@ -37,10 +37,12 @@ func _on_dice_rolled(number: int) -> void:
 		var sum = 0
 		for num in rolled_numbers: sum += num
 		move(sum)
+		$Label.text = "You rolled a %d" % sum
 		rolled_numbers = []
 
 func reroll():
 	var dices = $Dices.get_children()
+	$Label.text = "Rolling..."
 	for i in range(0, len(dices)):
 		dices[i].global_transform.origin = initial_dice_positions[i]
 		dices[i].set_sleeping(false)

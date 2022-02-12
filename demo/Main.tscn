@@ -22,16 +22,16 @@ script = ExtResource( 3 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.343, 0, 0 )
 
 [node name="Dice1" parent="Dices" instance=ExtResource( 1 )]
-transform = Transform( 0.708463, 0.107081, -0.697577, 0.705748, -0.107493, 0.700261, 0, -0.988423, -0.151727, -0.575187, 3.16691, 0 )
+transform = Transform( 0.135545, -0.949677, -0.282387, 0.705748, -0.107493, 0.700261, -0.695376, -0.294211, 0.655662, -1.15994, 3.16691, -1.05936 )
 
 [node name="Dice2" parent="Dices" instance=ExtResource( 1 )]
-transform = Transform( 0.120792, 0.582452, 0.803841, -0.102175, -0.798174, 0.593699, 0.987406, -0.153846, -0.0369011, -1.55999, 3.8054, 0 )
+transform = Transform( 0.992276, -0.0395676, 0.117574, -0.102175, -0.798174, 0.593699, 0.0703528, -0.601127, -0.796052, -1.34835, 3.8054, -0.0927455 )
 
 [node name="Dice3" parent="Dices" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, -0.233242, 0.972419, 0, -0.972419, -0.233242, -1.55999, 3.16691, 0 )
+transform = Transform( 0.191323, -0.954456, -0.228933, 0, -0.233242, 0.972419, -0.981527, -0.186046, -0.0446246, -1.34835, 3.16691, -0.0927455 )
 
 [node name="Dice4" parent="Dices" instance=ExtResource( 1 )]
-transform = Transform( 0.598339, -0.326776, -0.731579, 0.801243, 0.244024, 0.546316, 0, -0.913055, 0.407836, -2.23721, 3.16691, 0 )
+transform = Transform( 0.114476, -0.958708, 0.260334, 0.801243, 0.244024, 0.546316, -0.587286, 0.146051, 0.796093, -1.47792, 3.16691, 0.571964 )
 
 [node name="StaticBody" type="StaticBody" parent="."]
 transform = Transform( 5.787, 0, 0, 0, 1, 0, 0, 0, 5.114, 0, -0.483, 0 )
@@ -137,6 +137,17 @@ __meta__ = {
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
 volume_db = -9.613
+
+[node name="Label" type="Label" parent="."]
+margin_left = 7.0
+margin_top = 55.0
+margin_right = 47.0
+margin_bottom = 69.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Rolling..."
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [connection signal="rolled" from="Dices/Dice1" to="." method="_on_dice_rolled"]
 [connection signal="rolled" from="Dices/Dice2" to="." method="_on_dice_rolled"]

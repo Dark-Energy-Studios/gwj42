@@ -601,7 +601,7 @@ material/1 = null
 material/2 = null
 
 [node name="Dice3" type="MeshInstance" parent="."]
-transform = Transform( -0.254382, 1.86265e-07, -0.967104, -0.95041, -0.184999, 0.249991, -0.178913, 0.982739, 0.0470608, -4.11319, -1.27601, 0 )
+transform = Transform( -0.254382, 1.86265e-07, -0.967104, -0.95041, -0.184999, 0.249991, -0.178913, 0.982739, 0.0470607, -4.11319, -1.27601, 0 )
 visible = false
 mesh = ExtResource( 2 )
 material/0 = null
@@ -609,7 +609,7 @@ material/1 = null
 material/2 = null
 
 [node name="Dice4" type="MeshInstance" parent="."]
-transform = Transform( 0.363835, -0.909545, -0.200873, 0.327989, -0.0767419, 0.941559, -0.871806, -0.408457, 0.270399, -1.67501, -2.18278, 0 )
+transform = Transform( 0.363835, -0.909545, -0.200873, 0.327989, -0.0767418, 0.941559, -0.871806, -0.408457, 0.270399, -1.67501, -2.18278, 0 )
 visible = false
 mesh = ExtResource( 2 )
 material/0 = null
