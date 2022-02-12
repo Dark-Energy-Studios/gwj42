@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://demo/assets/tetraherdon_dice.obj" type="ArrayMesh" id=1]
+[ext_resource path="res://demo/scenes/Dice.gd" type="Script" id=2]
+
+[sub_resource type="ConvexPolygonShape" id=1]
+points = PoolVector3Array( 0.856, -0.47, 0.586, -0.004, -0.478, -0.923, -0.85, -0.47, 0.58, 0, 1.146, 0.085 )
+
+[node name="Dice" type="RigidBody"]
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0 )
+mesh = ExtResource( 1 )
+material/0 = null
+material/1 = null
+material/2 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0.045, -0.024 )
+shape = SubResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="WhitePoint1" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.389354, 0 )
+
+[node name="WhitePoint2" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000974521, -0.0897501, -0.288626 )
+
+[node name="EmptyPoint1" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.251998, -0.0897501, 0.151874 )
+
+[node name="EmptyPoint2" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.245957, -0.0897501, 0.151874 )
+
+[connection signal="sleeping_state_changed" from="." to="." method="_on_Dice_sleeping_state_changed"]

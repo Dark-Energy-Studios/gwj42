@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/dreamy_loop-1.mp3-a2058c20223b9faf2837ddce5d3dc7ed.mp3str"
+
+[deps]
+
+source_file="res://demo/assets/dreamy_loop-1.mp3"
+dest_files=[ "res://.import/dreamy_loop-1.mp3-a2058c20223b9faf2837ddce5d3dc7ed.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
