@@ -8,6 +8,16 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Node",
+"class": "BoardObject",
+"language": "GDScript",
+"path": "res://components/Board/BoardObject.gd"
+} ]
+_global_script_class_icons={
+"BoardObject": ""
+}
+
 [application]
 
 config/name="GWJ42"
