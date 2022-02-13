@@ -21,7 +21,7 @@ var currently_rolling: bool = true
 
 func _ready():
 	for dice in dices.get_children():
-		var val = (dice as Dice).connect("rolled", self, "_on_dice_rolled")
+		(dice as Dice).connect("rolled", self, "_on_dice_rolled")
 	for chip in player_chips.get_children() + enemy_chips.get_children():
 		(chip as Chip).connect("clicked", self, "_chip_clicked")
 
@@ -41,12 +41,44 @@ func _on_dice_rolled(number: int) -> void:
 			swap_current_turn_owner()
 		else:
 			set_teams_chips_clickable(current_turn_owner, true)
+			if unset_invalid_turns(current_turn_owner, sum):
+				swap_current_turn_owner()
 
 func set_teams_chips_clickable(team: int, clickable: bool) -> void:
 	var chips = player_chips if team == globals.Team.PLAYER else enemy_chips
 
 	for chip in chips.get_children():
 		(chip as Chip).clickable = clickable
+
+# makes the chips that can't be moved unclickable
+# and returns wether ALL are
+func unset_invalid_turns(team: int, number: int) -> bool:
+	var chips = player_chips if team == globals.Team.PLAYER else enemy_chips
+	var at_least_one_clickable: bool = false
+
+	for chip in chips.get_children():
+		var obj = board.get_board_object_by_chip(chip)
+		if not obj:
+			var spawn_point: Vector3
+			if team == globals.Team.PLAYER:
+				spawn_point = board.get_fields(Board.Field.PLAYER_START)[0]
+			else:
+				spawn_point = board.get_fields(Board.Field.ENEMY_START)[0]
+			
+			if board.is_field_occupied(spawn_point):
+				chip.clickable = false
+			else:
+				at_least_one_clickable = true
+		else:
+			var new_pos = obj.position
+			for _i in range(number):
+				new_pos += board.get_direction_from_field(board.get_field_by_vec(new_pos), team)
+			if board.get_move_action(obj, new_pos) == Board.Action.STAY:
+				chip.clickable = false
+			else:
+				at_least_one_clickable = true
+
+	return not at_least_one_clickable
 
 func swap_current_turn_owner():
 	if current_turn_owner == globals.Team.PLAYER:
@@ -64,7 +96,7 @@ func _chip_clicked(chip: Chip):
 		if not board.get_board_object_by_chip(chip):
 			(board as Board).spawn_chip(chip)
 			rolled_number = max(0, rolled_number - 1)
-		
+
 		board.move_x_times(chip, rolled_number)
 		chip.global_transform.origin = board.get_board_object_by_chip(chip).get_global_pos() + Vector3(.5, 1, .5)
 		swap_current_turn_owner()

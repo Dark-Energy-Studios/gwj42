@@ -56,10 +56,17 @@ transform = Transform( 0.497882, 0.853372, 0.154499, 0, -0.17815, 0.984003, 0.86
 [node name="Chip" parent="PlayerChips" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8377, 0.422113, -2.77298 )
 
+[node name="Chip2" parent="PlayerChips" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.88128, 0.426465, -1.98025 )
+
 [node name="EnemyChips" type="Spatial" parent="."]
 
 [node name="Chip" parent="EnemyChips" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8377, 0.422113, 2.63133 )
+team = 1
+
+[node name="Chip2" parent="EnemyChips" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8377, 0.422113, 3.39579 )
 team = 1
 
 [node name="RerollLabel" type="Label" parent="."]

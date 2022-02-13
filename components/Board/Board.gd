@@ -47,13 +47,19 @@ func get_fields(field_type: int) -> Array:
 
 	return cells
 
+func is_field_occupied(coords: Vector3) -> bool:
+	for obj in board_objects:
+		if obj.position == coords:
+			return true
+	return false
+
 # Get the type of a field by its coordinates
 func get_field(x: float, y: float, z: float) -> int:
 	return $GridMap.get_cell_item(x, y, z)
 
 # Get the type of a field by its vector
-func get_field_by_vec(vector: Vector3) -> int:
-	return get_field(vector.x, vector.y, vector.z)
+func get_field_by_vec(coords: Vector3) -> int:
+	return get_field(coords.x, coords.y, coords.z)
 
 # Spawn a chip in the board system
 func spawn_chip(chip: Chip) -> bool:
@@ -117,7 +123,7 @@ func request_move(chip: Chip, new_coords: Vector3) -> int:
 	return action
 
 # Returns an Action
-func move_x_times(chip: Chip, x: int) -> int:
+func move_x_times(chip, x: int) -> int:
 	var obj = get_board_object_by_chip(chip)
 	var new_pos = obj.position
 	for _i in range(x):

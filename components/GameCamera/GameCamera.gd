@@ -17,7 +17,6 @@ func get_current():
 
 func _ready():
 	$Camera.fov = fov
-	print($Camera.fov)
 	$Camera.current = current
 	$Camera.transform.origin = Vector3(0, height, distance)
 	

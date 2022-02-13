@@ -5,7 +5,7 @@ var position: Vector3
 var chip: Chip
 var grid_map: GridMap 
 
-func _init(_chip: Chip, _position: Vector3, _grid_map: GridMap):
+func _init(_chip, _position: Vector3, _grid_map: GridMap):
 	chip = _chip
 	position = _position
 	grid_map = _grid_map 
