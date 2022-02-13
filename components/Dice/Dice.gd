@@ -1,4 +1,5 @@
 extends RigidBody
+class_name Dice
 
 signal rolled(number)
 

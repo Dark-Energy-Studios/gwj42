@@ -9,13 +9,37 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "StaticBody",
+"class": "Board",
+"language": "GDScript",
+"path": "res://components/Board/Board.gd"
+}, {
 "base": "Node",
 "class": "BoardObject",
 "language": "GDScript",
 "path": "res://components/Board/BoardObject.gd"
+}, {
+"base": "RigidBody",
+"class": "Chip",
+"language": "GDScript",
+"path": "res://components/Chip/Chip.gd"
+}, {
+"base": "RigidBody",
+"class": "Dice",
+"language": "GDScript",
+"path": "res://components/Dice/Dice.gd"
+}, {
+"base": "Node",
+"class": "GameController",
+"language": "GDScript",
+"path": "res://components/GameController/GameController.gd"
 } ]
 _global_script_class_icons={
-"BoardObject": ""
+"Board": "",
+"BoardObject": "",
+"Chip": "",
+"Dice": "",
+"GameController": ""
 }
 
 [application]
@@ -23,6 +47,32 @@ _global_script_class_icons={
 config/name="GWJ42"
 run/main_scene="res://demo/Menu.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+globals="*res://scripts/globals.gd"
+
+[debug]
+
+gdscript/warnings/return_value_discarded=false
+
+[global]
+
+error=false
+gdscript=false
+
+[input]
+
+left_click={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
+r_key={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":82,"unicode":0,"echo":false,"script":null)
+ ]
+}
 
 [physics]
 

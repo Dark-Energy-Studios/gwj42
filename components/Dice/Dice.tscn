@@ -37,3 +37,5 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.251998, -0.0897501, 0.15187
 
 [node name="EmptyPoint2" type="Position3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.245957, -0.0897501, 0.151874 )
+
+[connection signal="sleeping_state_changed" from="." to="." method="_on_Dice_sleeping_state_changed"]

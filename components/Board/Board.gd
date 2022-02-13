@@ -1,4 +1,5 @@
 extends StaticBody
+class_name Board
 
 signal kicked_out(kicking_obj, kicked_obj)
 
@@ -6,7 +7,7 @@ signal kicked_out(kicking_obj, kicked_obj)
 enum Field {
 	EMPTY = -1
 	PLAYER_START = 1
-	ENEMY_START
+	ENEMY_START = 9
 	SPECIAL = 7
 	END = 8
 }
@@ -54,38 +55,36 @@ func get_field(x: float, y: float, z: float) -> int:
 func get_field_by_vec(vector: Vector3) -> int:
 	return get_field(vector.x, vector.y, vector.z)
 
-# Spawn a player object at the Field.PLAYER_START field
-func spawn_player_object(player) -> bool:
-	var spawn_point = get_fields(Field.PLAYER_START)
-	for obj in board_objects:
-		if obj.position == spawn_point:
-			return false
-	board_objects.append(BoardObject.new(true, player, spawn_point[0], $GridMap))
-	return true
+# Spawn a chip in the board system
+func spawn_chip(chip: Chip) -> bool:
+	var spawn_point: Array#<Vector3>
+	if chip.team == globals.Team.PLAYER:
+		spawn_point = get_fields(Field.PLAYER_START)
+	else:
+		spawn_point = get_fields(Field.ENEMY_START)
 
-# Spawn an enemy object at the Field.ENEMY_START field
-func spawn_enemy_object(enemy) -> bool:
-	var spawn_point = get_fields(Field.ENEMY_START)
 	for obj in board_objects:
-		if obj.position == spawn_point:
+		if obj.position == spawn_point[0]:
 			return false
-	board_objects.append(BoardObject.new(false, enemy, spawn_point, $GridMap))
+
+	board_objects.append(BoardObject.new(chip, spawn_point[0], $GridMap))
 	return true
 
 func remove_board_object(chip) -> void:
 	board_objects.erase(get_board_object_by_chip(chip))
 
-func get_direction_from_field(field: int, is_player: bool) -> Vector3:
+func get_direction_from_field(field: int, team: int) -> Vector3:
 	var directions ={
 		0: Vector3(0, 0, 1),
 		1: Vector3(0, 0, -1),
-		2: Vector3(-1, 0, 0) if is_player else Vector3(1, 0, 0),
-		3: Vector3(1, 0, 0) if is_player else Vector3(-1, 0, 0),
+		2: Vector3(-1, 0, 0) if team == globals.Team.PLAYER else Vector3(1, 0, 0),
+		3: Vector3(1, 0, 0) if team == globals.Team.PLAYER else Vector3(-1, 0, 0),
 		4: Vector3(0, 0, -1),
 		5: Vector3(0, 0, -1),
 		6: Vector3(0, 0, -1),
 		7: Vector3(0, 0, -1),
-		8: Vector3(0, 0, 1)
+		8: Vector3(0, 0, 1),
+		9: Vector3(0, 0, -1)
 	}
 	return directions[field]
 
@@ -95,7 +94,7 @@ func get_move_action(moving_obj: BoardObject, new_coords: Vector3) -> int:
 	for obj in board_objects:
 		if obj == moving_obj: continue
 		if obj.position == new_coords:
-			if get_field_by_vec(obj.position) != Field.SPECIAL and obj.is_player != moving_obj.is_player:
+			if get_field_by_vec(obj.position) != Field.SPECIAL and obj.chip.team != moving_obj.chip.team:
 				return Action.KICK_OUT
 			else:
 				return Action.STAY
@@ -103,17 +102,8 @@ func get_move_action(moving_obj: BoardObject, new_coords: Vector3) -> int:
 	return Action.MOVE
 
 # Request a certain move for a certain object
-
-func _ready():
-	print(spawn_player_object("Something"))
-
-func _on_Timer_timeout():
-	move_x_times("Something", 3)
-	var obj = get_board_object_by_chip("Something")
-	$MeshInstance.global_transform.origin = obj.get_global_pos() + Vector3(.5, .5, .5)
-
 # Returns an Action
-func request_move(chip, new_coords: Vector3) -> int:
+func request_move(chip: Chip, new_coords: Vector3) -> int:
 	var obj = get_board_object_by_chip(chip)
 	if not obj:
 		return Action.ERROR
@@ -126,9 +116,11 @@ func request_move(chip, new_coords: Vector3) -> int:
 
 	return action
 
-func move_x_times(chip, x: int):
+# Returns an Action
+func move_x_times(chip: Chip, x: int) -> int:
 	var obj = get_board_object_by_chip(chip)
 	var new_pos = obj.position
 	for _i in range(x):
-		new_pos += get_direction_from_field(get_field_by_vec(new_pos), obj.is_player)
-	request_move("Something", new_pos)
+		new_pos += get_direction_from_field(get_field_by_vec(new_pos), chip.team)
+
+	return request_move(chip, new_pos)
