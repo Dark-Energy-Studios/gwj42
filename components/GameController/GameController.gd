@@ -24,6 +24,10 @@ func _ready():
 		(dice as Dice).connect("rolled", self, "_on_dice_rolled")
 	for chip in player_chips.get_children() + enemy_chips.get_children():
 		(chip as Chip).connect("clicked", self, "_chip_clicked")
+	board.connect("kicked_out", self, "_on_kickout")
+
+func _on_kickout(_kicker: Chip, kicked: Chip) -> void:
+	kicked.queue_free()
 
 func _on_dice_rolled(number: int) -> void:
 	if not currently_rolling: return

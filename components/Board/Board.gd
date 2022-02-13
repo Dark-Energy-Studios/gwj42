@@ -1,7 +1,7 @@
 extends StaticBody
 class_name Board
 
-signal kicked_out(kicking_obj, kicked_obj)
+signal kicked_out(kicking_chip, kicked_chip)
 
 # TODO: Replace enum values with actual field values
 enum Field {
@@ -116,7 +116,10 @@ func request_move(chip: Chip, new_coords: Vector3) -> int:
 
 	var action = get_move_action(obj, new_coords)
 	if action == Action.KICK_OUT:
-		emit_signal("kicked_out", chip, get_board_object_by_coords(new_coords).chip)
+		var kicked_chip = get_board_object_by_coords(new_coords).chip
+		emit_signal("kicked_out", chip, kicked_chip)
+		obj.position = new_coords
+		remove_board_object(kicked_chip)
 	elif action == Action.MOVE:
 		obj.position = new_coords
 
