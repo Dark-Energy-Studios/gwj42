@@ -54,6 +54,9 @@ transform = Transform( 0.48105, -0.521194, -0.704945, 0, 0.804096, -0.5945, 0.87
 [node name="Die-3" parent="Dice" instance=ExtResource( 5 )]
 transform = Transform( 0.497882, 0.853372, 0.154499, 0, -0.17815, 0.984003, 0.867245, -0.489918, -0.0886976, 0, 0.383462, 1.21631 )
 
+[node name="Die-4" parent="Dice" instance=ExtResource( 5 )]
+transform = Transform( 0.608023, 0.289903, 0.739096, -0.355017, -0.733403, 0.579727, 0.710121, -0.61488, -0.343005, 0, 1.50644, 2.66003 )
+
 [node name="PlayerChips" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.770211, 0 )
 __meta__ = {
