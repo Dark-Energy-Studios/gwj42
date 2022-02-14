@@ -45,7 +45,7 @@ _global_script_class_icons={
 [application]
 
 config/name="GWJ42"
-run/main_scene="res://demo/Menu.tscn"
+run/main_scene="res://scenes/TestLevel.tscn"
 config/icon="res://icon.png"
 
 [autoload]

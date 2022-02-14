@@ -26,21 +26,21 @@ board_path = NodePath("../Board")
 
 [node name="Board" parent="." instance=ExtResource( 1 )]
 
-[node name="StaticBody" type="StaticBody" parent="."]
-transform = Transform( 4.277, 0, 0, 0, 0.064, 0, 0, 0, 4.963, -1.5, 0, 0 )
+[node name="Table" type="StaticBody" parent="."]
+transform = Transform( 7, 0, 0, 0, 0.1, 0, 0, 0, 7, -1.5, -0.944855, 0 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
+[node name="CollisionShape" type="CollisionShape" parent="Table"]
 shape = SubResource( 1 )
 
-[node name="MeshInstance" type="MeshInstance" parent="StaticBody"]
+[node name="MeshInstance" type="MeshInstance" parent="Table"]
 mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Dices" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.3607, 1.53673, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.55625, 1.53673, 0 )
 
 [node name="Dice" parent="Dices" instance=ExtResource( 5 )]
 transform = Transform( -0.0297884, 0.999556, 0, -0.999556, -0.0297884, 0, 0, 0, 1, 0, 1.05737, 0 )
@@ -52,6 +52,10 @@ transform = Transform( 0.48105, -0.521194, -0.704945, 0, 0.804096, -0.5945, 0.87
 transform = Transform( 0.497882, 0.853372, 0.154499, 0, -0.17815, 0.984003, 0.867245, -0.489918, -0.0886976, 0, 0.383462, 1.21631 )
 
 [node name="PlayerChips" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.770211, 0 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Chip" parent="PlayerChips" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8377, 0.422113, -2.77298 )
@@ -60,6 +64,10 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8377, 0.422113, -2.77298 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.88128, 0.426465, -1.98025 )
 
 [node name="EnemyChips" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.04212, -0.759192, -5.43938 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Chip" parent="EnemyChips" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8377, 0.422113, 2.63133 )
@@ -88,7 +96,7 @@ __meta__ = {
 }
 
 [node name="GameCamera" parent="." instance=ExtResource( 6 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.55161, 0.318496, 0 )
+transform = Transform( 0.128588, -0.379506, -0.91621, 0, 0.92388, -0.382683, 0.991698, 0.0492085, 0.1188, -2, 0, 0.324738 )
 distance = 3.0
 height = 5.0
 fov = 70.0
