@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://components/Board/Board.tscn" type="PackedScene" id=1]
 [ext_resource path="res://components/Chip/Chip.tscn" type="PackedScene" id=2]
@@ -6,6 +6,9 @@
 [ext_resource path="res://components/GameController/GameController.tscn" type="PackedScene" id=4]
 [ext_resource path="res://components/Die/Die.tscn" type="PackedScene" id=5]
 [ext_resource path="res://components/GameCamera/GameCamera.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/audio/sound/dice_roll_1.mp3" type="AudioStream" id=7]
+[ext_resource path="res://assets/audio/sound/turn_player.mp3" type="AudioStream" id=8]
+[ext_resource path="res://assets/audio/sound/token_move_3.mp3" type="AudioStream" id=9]
 
 [sub_resource type="BoxShape" id=1]
 
@@ -100,5 +103,14 @@ transform = Transform( 0.128588, -0.379506, -0.91621, 0, 0.92388, -0.382683, 0.9
 distance = 3.0
 height = 5.0
 fov = 70.0
+
+[node name="DiceSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+
+[node name="TurnSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+
+[node name="TokenSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
 
 [connection signal="switch_turn" from="GameController" to="." method="_on_GameController_switch_turn"]
