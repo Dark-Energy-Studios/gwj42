@@ -18,6 +18,7 @@ var rolled_number: int
 # Current turn represented as globals.Team enum
 var current_turn_owner: int = globals.Team.PLAYER
 var currently_rolling: bool = true
+var opponent_ai = BaseAI.new()
 
 func _ready():
 	for die in dice.get_children():
@@ -47,6 +48,9 @@ func _on_dice_rolled(number: int) -> void:
 			set_teams_chips_clickable(current_turn_owner, true)
 			if unset_invalid_turns(current_turn_owner, sum):
 				swap_current_turn_owner()
+			
+			if current_turn_owner == globals.Team.ENEMY:
+				opponent_ai.make_move(sum, enemy_chips, player_chips)
 
 func set_teams_chips_clickable(team: int, clickable: bool) -> void:
 	var chips = player_chips if team == globals.Team.PLAYER else enemy_chips
@@ -92,6 +96,10 @@ func swap_current_turn_owner():
 
 	emit_signal("switch_turn", current_turn_owner)
 	currently_rolling = true
+	
+	if current_turn_owner == globals.Team.ENEMY:
+		yield(get_tree().create_timer(2.0), "timeout")
+		roll_dice()
 
 func _chip_clicked(chip: Chip):
 	if chip.team == current_turn_owner:
