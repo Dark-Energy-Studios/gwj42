@@ -11,5 +11,5 @@ dest_files=[ "res://.import/dice_grabroll.mp3-700c4eae8157b558b9f99fa0b35586e7.m
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0
