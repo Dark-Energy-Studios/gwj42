@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/token_drop_3.mp3-8cefde720e4339e2c79358bce818835a.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/sound/token_drop_3.mp3"
+dest_files=[ "res://.import/token_drop_3.mp3-8cefde720e4339e2c79358bce818835a.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

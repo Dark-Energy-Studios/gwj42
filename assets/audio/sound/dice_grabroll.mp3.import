@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/dice_grabroll.mp3-700c4eae8157b558b9f99fa0b35586e7.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/sound/dice_grabroll.mp3"
+dest_files=[ "res://.import/dice_grabroll.mp3-700c4eae8157b558b9f99fa0b35586e7.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
