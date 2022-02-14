@@ -11,5 +11,5 @@ dest_files=[ "res://.import/token_move_2.mp3-919be2400a8011e44a19d5bf0730490f.mp
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

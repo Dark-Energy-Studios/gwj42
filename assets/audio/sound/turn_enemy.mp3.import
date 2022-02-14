@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/turn_enemy.mp3-90c0057496ed885ac482d94fccca4253.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/sound/turn_enemy.mp3"
+dest_files=[ "res://.import/turn_enemy.mp3-90c0057496ed885ac482d94fccca4253.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -11,5 +11,5 @@ dest_files=[ "res://.import/dice_roll_1.mp3-94b07c823f3b30bcbd32caa32a755f5b.mp3
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0
