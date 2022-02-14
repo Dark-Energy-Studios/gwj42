@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Object",
+"class": "BaseAI",
+"language": "GDScript",
+"path": "res://components/BaseAI/BaseAI.gd"
+}, {
 "base": "StaticBody",
 "class": "Board",
 "language": "GDScript",
@@ -25,9 +30,9 @@ _global_script_classes=[ {
 "path": "res://components/Chip/Chip.gd"
 }, {
 "base": "RigidBody",
-"class": "Dice",
+"class": "Die",
 "language": "GDScript",
-"path": "res://components/Dice/Dice.gd"
+"path": "res://components/Die/Die.gd"
 }, {
 "base": "Node",
 "class": "GameController",
@@ -35,10 +40,11 @@ _global_script_classes=[ {
 "path": "res://components/GameController/GameController.gd"
 } ]
 _global_script_class_icons={
+"BaseAI": "",
 "Board": "",
 "BoardObject": "",
 "Chip": "",
-"Dice": "",
+"Die": "",
 "GameController": ""
 }
 
