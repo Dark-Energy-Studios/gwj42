@@ -22,6 +22,7 @@ var opponent_ai = BaseAI.new()
 
 func _ready():
 	for die in dice.get_children():
+		die.scale = Vector3(0.5, 0.5, 0.5)
 		(die as Die).connect("rolled", self, "_on_dice_rolled")
 	for chip in player_chips.get_children() + enemy_chips.get_children():
 		(chip as Chip).connect("clicked", self, "_chip_clicked")

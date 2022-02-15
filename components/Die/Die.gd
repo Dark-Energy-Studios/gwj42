@@ -21,5 +21,12 @@ func _on_Dice_sleeping_state_changed():
 		emit_signal("rolled", get_rolled_number())
 
 func reset():
+	# Set Position
 	global_transform.origin = initial_position
+	
+	# Random Angle (or more specifically a fixed angle on a random axis)
+	randomize()
+	var axis = Vector3(randf(), randf(), randf()).normalized()
+	global_rotate(axis, 3.14)
+	
 	set_sleeping(false)
