@@ -260,8 +260,9 @@ special = true
 
 [node name="GameCamera" parent="." instance=ExtResource( 6 )]
 transform = Transform( 0.128588, -0.379506, -0.91621, 0, 0.92388, -0.382683, 0.991698, 0.0492085, 0.1188, -2, 0, 0.324738 )
-distance = 3.0
-height = 5.0
+rotation_speed = 2.0
+distance = 6.5
+height = 6.5
 fov = 70.0
 
 [node name="RollButton" type="TextureButton" parent="."]

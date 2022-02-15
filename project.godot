@@ -34,6 +34,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://components/AI/EvilcookieAI.gd"
 }, {
+"base": "Position3D",
+"class": "GameCamera",
+"language": "GDScript",
+"path": "res://components/GameCamera/GameCamera.gd"
+}, {
 "base": "Node",
 "class": "MusicPlayer",
 "language": "GDScript",
@@ -52,6 +57,7 @@ _global_script_class_icons={
 "EvilcookieAI": "",
 "MusicPlayer": "",
 "TchiboAI": ""
+"GameCamera": "",
 }
 
 [application]

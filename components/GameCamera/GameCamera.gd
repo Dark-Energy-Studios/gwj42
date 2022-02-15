@@ -1,28 +1,45 @@
 extends Position3D
+class_name GameCamera
 
 export var current: bool = true setget set_current, get_current
 export(float, 0.5, 10.0, 0.5) var rotation_speed = 1
-export var distance: float = 1
-export var height: float = 1
+export(float, 1, 15, 0.5) var distance = 1
+export(float, 1, 15, 0.5) var height = 1
 export var fov: float setget set_fov
 
+onready var default_cam = get_node("DefaultCamera")
+onready var top_down_cam = get_node("TopDownCamera")
+
 func set_fov(val):
-	$Camera.fov = val
+	$DefaultCamera.fov = val
 
 func set_current(val):
-	$Camera.current = val
+	default_cam.current = val
 
 func get_current():
-	return $Camera.current
+	return default_cam.current
 
 func _ready():
-	$Camera.fov = fov
-	$Camera.current = current
-	$Camera.transform.origin = Vector3(0, height, distance)
-	
-func _process(delta):
-	$Camera.look_at(global_transform.origin, Vector3.UP)
-	if Input.is_action_pressed("ui_right"):
-		rotate_y(rotation_speed*delta)
-	elif Input.is_action_pressed("ui_left"):
-		rotate_y(-rotation_speed*delta)
+	default_cam.fov = fov
+	default_cam.current = current
+	default_cam.transform.origin = Vector3(0, height, distance)
+	top_down_cam.transform.origin = Vector3(0, height, 0)
+
+func _input(event):
+	if event is InputEventMouseMotion and Input.is_action_pressed("right_click") and default_cam.current:
+		var movement = event.relative
+		default_cam.transform.origin.y += -deg2rad(movement.y * rotation_speed)
+		default_cam.transform.origin.z -= -deg2rad(movement.y * rotation_speed)
+		default_cam.transform.origin.y = clamp(default_cam.transform.origin.y, 1.9, height)
+		default_cam.transform.origin.z = clamp(default_cam.transform.origin.z, .5, distance)
+		rotation.y += -deg2rad(movement.x * rotation_speed)
+	elif Input.is_action_pressed("switch_camera"):
+		if default_cam.current:
+			top_down_cam.make_current()
+			rotation_degrees = Vector3.ZERO
+		else:
+			default_cam.make_current()
+
+
+func _process(_delta):
+	default_cam.look_at(global_transform.origin, Vector3.UP)
