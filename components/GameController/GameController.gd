@@ -44,11 +44,11 @@ func _on_dice_rolled(number: int) -> void:
 		rolled_number = sum
 		currently_rolling = false
 		if sum == 0:
-			swap_current_turn_owner()
+			finish_turn(Board.Move.DO_SOMETHING())
 		else:
 			set_teams_chips_clickable(current_turn_owner, true)
 			if unset_invalid_turns(current_turn_owner, sum):
-				swap_current_turn_owner()
+				finish_turn(Board.Move.DO_SOMETHING())
 			
 			if current_turn_owner == globals.Team.ENEMY:
 				opponent_ai.make_move(sum, enemy_chips, player_chips)
@@ -111,9 +111,10 @@ func _chip_clicked(chip: Chip):
 			(board as Board).spawn_chip(chip)
 			rolled_number = max(0, rolled_number - 1)
 
-		board.move_x_times(chip, rolled_number)
+		var move:Board.Move = board.move_x_times(chip, rolled_number)
 		chip.global_transform.origin = board.get_board_object_by_chip(chip).get_global_pos() + Vector3(.5, 1, .5)
-		swap_current_turn_owner()
+		
+		finish_turn(move)
 
 func roll_dice():
 	currently_rolling = true
