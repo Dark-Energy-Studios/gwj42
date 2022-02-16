@@ -82,23 +82,25 @@ func unset_invalid_turns(team: int, number: int) -> bool:
 			var new_pos = obj.position
 			for _i in range(number):
 				new_pos += board.get_direction_from_field(board.get_field_by_vec(new_pos), team)
-			if board.get_move_action(obj, new_pos) == Board.Action.STAY:
+			if board.get_move_action(obj, new_pos).action == Board.Action.STAY:
 				chip.clickable = false
 			else:
 				at_least_one_clickable = true
 
 	return not at_least_one_clickable
 
-func swap_current_turn_owner():
-	if current_turn_owner == globals.Team.PLAYER:
-		current_turn_owner = globals.Team.ENEMY
-	else:
-		current_turn_owner = globals.Team.PLAYER
+func finish_turn(move: Board.Move):
+	
+	if move.action != Board.Field.SPECIAL:
+		if current_turn_owner == globals.Team.PLAYER:
+			current_turn_owner = globals.Team.ENEMY
+		else:
+			current_turn_owner = globals.Team.PLAYER
 
 	emit_signal("switch_turn", current_turn_owner)
 	
 	if current_turn_owner == globals.Team.ENEMY:
-		yield(get_tree().create_timer(2.0), "timeout")
+		# yield(get_tree().create_timer(2.0), "timeout")
 		roll_dice()
 
 func _chip_clicked(chip: Chip):
