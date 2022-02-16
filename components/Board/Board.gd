@@ -19,6 +19,18 @@ enum Action {
 	KICK_OUT
 }
 
+class Move:
+	var action: int
+	var field: int
+	
+	func _init(action, field):
+		self.action = action
+		self.field = field		
+	static func EMPTY() -> Move:
+		return Move.new(Action.ERROR, Field.EMPTY)
+	static func DO_SOMETHING() -> Move:
+		return Move.new(Action.MOVE, Field.EMPTY)
+
 var board_objects := []
 
 func get_board_object_by_chip(chip):
@@ -96,37 +108,38 @@ func get_direction_from_field(field: int, team: int) -> Vector3:
 
 # Get the action that is happening when a certain object wants to do
 # a certain move
-func get_move_action(moving_obj: BoardObject, new_coords: Vector3) -> int:
+func get_move_action(moving_obj: BoardObject, new_coords: Vector3) -> Move:
+	var new_field = get_field_by_vec(new_coords)
 	for obj in board_objects:
 		if obj == moving_obj: continue
 		if obj.position == new_coords:
-			if get_field_by_vec(obj.position) != Field.SPECIAL and obj.chip.team != moving_obj.chip.team:
-				return Action.KICK_OUT
+			if new_field != Field.SPECIAL and obj.chip.team != moving_obj.chip.team:
+				return Move.new(Action.KICK_OUT, new_field)
 			else:
-				return Action.STAY
+				return Move.new(Action.STAY, new_field)
 
-	return Action.MOVE
+	return Move.new(Action.MOVE, new_field)
 
 # Request a certain move for a certain object
 # Returns an Action
-func request_move(chip: Chip, new_coords: Vector3) -> int:
+func request_move(chip: Chip, new_coords: Vector3) -> Move:
 	var obj = get_board_object_by_chip(chip)
 	if not obj:
-		return Action.ERROR
-
-	var action = get_move_action(obj, new_coords)
-	if action == Action.KICK_OUT:
+		return Move.EMPTY
+		
+	var move = get_move_action(obj, new_coords)
+	if move.action == Action.KICK_OUT:
 		var kicked_chip = get_board_object_by_coords(new_coords).chip
 		emit_signal("kicked_out", chip, kicked_chip)
 		obj.position = new_coords
 		remove_board_object(kicked_chip)
-	elif action == Action.MOVE:
+	elif move.action == Action.MOVE:
 		obj.position = new_coords
 
-	return action
+	return move
 
 # Returns an Action
-func move_x_times(chip, x: int) -> int:
+func move_x_times(chip, x: int) -> Move:
 	var obj = get_board_object_by_chip(chip)
 	var new_pos = obj.position
 	for _i in range(x):
