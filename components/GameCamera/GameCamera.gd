@@ -25,14 +25,17 @@ func _ready():
 	default_cam.transform.origin = Vector3(0, height, distance)
 	top_down_cam.transform.origin = Vector3(0, height, 0)
 
+func move_cam(movement: Vector2):
+	default_cam.transform.origin.y += -deg2rad(movement.y * rotation_speed)
+	default_cam.transform.origin.z -= -deg2rad(movement.y * rotation_speed)
+	default_cam.transform.origin.y = clamp(default_cam.transform.origin.y, 1.9, height)
+	default_cam.transform.origin.z = clamp(default_cam.transform.origin.z, .5, distance)
+	rotation.y += -deg2rad(movement.x * rotation_speed)
+
 func _input(event):
 	if event is InputEventMouseMotion and Input.is_action_pressed("right_click") and default_cam.current:
-		var movement = event.relative
-		default_cam.transform.origin.y += -deg2rad(movement.y * rotation_speed)
-		default_cam.transform.origin.z -= -deg2rad(movement.y * rotation_speed)
-		default_cam.transform.origin.y = clamp(default_cam.transform.origin.y, 1.9, height)
-		default_cam.transform.origin.z = clamp(default_cam.transform.origin.z, .5, distance)
-		rotation.y += -deg2rad(movement.x * rotation_speed)
+		move_cam(event.relative)
+		
 	elif Input.is_action_pressed("switch_camera"):
 		if default_cam.current:
 			top_down_cam.make_current()
@@ -41,5 +44,10 @@ func _input(event):
 			default_cam.make_current()
 
 
-func _process(_delta):
+func _process(delta):
 	default_cam.look_at(global_transform.origin, Vector3.UP)
+	if Input.is_action_pressed("arrow_keys"):
+		move_cam(Vector2(
+			(int(Input.is_action_pressed("ui_left")) - int(Input.is_action_pressed("ui_right"))) * 2,
+			(int(Input.is_action_pressed("ui_down")) - int(Input.is_action_pressed("ui_up"))) * 2
+		))
