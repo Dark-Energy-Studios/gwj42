@@ -49,7 +49,7 @@ func _on_dice_rolled(number: int) -> void:
 			set_teams_chips_clickable(current_turn_owner, true)
 			if unset_invalid_turns(current_turn_owner, sum):
 				finish_turn(Board.Move.DO_SOMETHING())
-			
+
 			if current_turn_owner == globals.Team.ENEMY:
 				opponent_ai.make_move(sum, enemy_chips, player_chips)
 

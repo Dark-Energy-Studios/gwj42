@@ -25,7 +25,7 @@ class Move:
 	
 	func _init(action, field):
 		self.action = action
-		self.field = field		
+		self.field = field
 	static func EMPTY() -> Move:
 		return Move.new(Action.ERROR, Field.EMPTY)
 	static func DO_SOMETHING() -> Move:
@@ -100,7 +100,7 @@ func get_direction_from_field(field: int, team: int) -> Vector3:
 		4: Vector3(0, 0, -1),
 		5: Vector3(0, 0, -1),
 		6: Vector3(0, 0, -1),
-		7: Vector3(0, 0, -1),
+		7: Vector3(0, 0, 1),
 		8: Vector3(0, 0, 1),
 		9: Vector3(0, 0, -1)
 	}
