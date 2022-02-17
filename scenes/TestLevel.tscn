@@ -39,12 +39,6 @@ font_data = ExtResource( 12 )
 [node name="TestLevel" type="Spatial"]
 script = ExtResource( 3 )
 
-[node name="GameController" parent="." instance=ExtResource( 4 )]
-player_chips_path = NodePath("../PlayerChips")
-enemy_chips_path = NodePath("../EnemyChips")
-board_path = NodePath("../Board")
-dice_path = NodePath("../Dice")
-
 [node name="Board" parent="." instance=ExtResource( 1 )]
 
 [node name="Table" type="StaticBody" parent="."]

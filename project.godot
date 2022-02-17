@@ -14,11 +14,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://components/BaseAI/BaseAI.gd"
 }, {
-"base": "StaticBody",
-"class": "Board",
-"language": "GDScript",
-"path": "res://components/Board/Board.gd"
-}, {
 "base": "Node",
 "class": "BoardObject",
 "language": "GDScript",
@@ -41,7 +36,6 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "BaseAI": "",
-"Board": "",
 "BoardObject": "",
 "Chip": "",
 "Die": "",
