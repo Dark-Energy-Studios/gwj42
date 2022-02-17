@@ -17,9 +17,8 @@ func get_rolled_number():
 	return 1 if highest_point.name.begins_with("White") else 0
 
 func _on_Dice_sleeping_state_changed():
-	pass
-	#if is_sleeping():
-	#	emit_signal("rolled", get_rolled_number())
+	if is_sleeping():
+		emit_signal("rolled", get_rolled_number())
 
 func roll():
 	# Set Position
@@ -31,4 +30,4 @@ func roll():
 	global_rotate(axis, 3.14)
 	
 	set_sleeping(false)
-	emit_signal("rolled", randi() % 2)
+	# emit_signal("rolled", randi() % 2)
