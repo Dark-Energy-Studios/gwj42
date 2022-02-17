@@ -207,7 +207,7 @@ image = SubResource( 105 )
 size = Vector2( 64, 64 )
 
 [resource]
-item/0/name = "Field1"
+item/0/name = "Forward Ant Field"
 item/0/mesh = SubResource( 23 )
 item/0/mesh_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 item/0/shapes = [  ]
@@ -249,7 +249,7 @@ item/6/mesh_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 item/6/shapes = [  ]
 item/6/navmesh_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 item/6/preview = SubResource( 43 )
-item/7/name = "Field8"
+item/7/name = "Middle Flower Field"
 item/7/mesh = SubResource( 44 )
 item/7/mesh_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 item/7/shapes = [  ]
