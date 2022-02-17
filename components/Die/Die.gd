@@ -21,7 +21,7 @@ func _on_Dice_sleeping_state_changed():
 	#if is_sleeping():
 	#	emit_signal("rolled", get_rolled_number())
 
-func reset():
+func roll():
 	# Set Position
 	global_transform.origin = initial_position
 	
