@@ -96,7 +96,6 @@ func swap_current_turn_owner():
 		current_turn_owner = globals.Team.PLAYER
 
 	emit_signal("switch_turn", current_turn_owner)
-	currently_rolling = true
 	
 	if current_turn_owner == globals.Team.ENEMY:
 		yield(get_tree().create_timer(2.0), "timeout")
@@ -115,5 +114,6 @@ func _chip_clicked(chip: Chip):
 		swap_current_turn_owner()
 
 func roll_dice():
-		for die in dice.get_children():
-			die.reset()
+	currently_rolling = true
+	for die in dice.get_children():
+		die.reset()
