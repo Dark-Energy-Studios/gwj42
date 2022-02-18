@@ -1,9 +1,10 @@
 extends RigidBody
 class_name Die
 
-signal rolled(number)
+signal rolled()
 
 var initial_position
+var number
 
 func _ready():
 	initial_position = global_transform.origin
@@ -18,7 +19,8 @@ func get_rolled_number():
 
 func _on_Dice_sleeping_state_changed():
 	if is_sleeping():
-		emit_signal("rolled", get_rolled_number())
+		number = get_rolled_number()
+		emit_signal("rolled")
 
 func roll():
 	# Set Position

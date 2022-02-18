@@ -5,7 +5,6 @@
 
 [sub_resource type="GDScript" id=2]
 script/source = "extends RigidBody
-class_name Chip
 
 signal clicked(chip)
 
@@ -17,6 +16,8 @@ var hovered: bool = false
 
 var mesh: MeshInstance
 
+var initial_position:Vector3
+
 func _ready():
 	if team == globals.Team.PLAYER:
 		$EnemyMesh.queue_free()
@@ -25,6 +26,15 @@ func _ready():
 		$PlayerMesh.queue_free()
 		mesh = $EnemyMesh
 		mesh.show()
+
+	initial_position = mesh.global_transform.origin
+
+func reset_chip():
+	mesh.global_transform.origin = initial_position
+
+func move_chip(target_position:Vector3):
+	target_position.y = hover_height
+	mesh.global_transform.origin = target_position
 
 func _on_Chip_mouse_entered():
 	if clickable and not hovered:

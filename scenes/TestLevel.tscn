@@ -177,50 +177,50 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.47716, 0, 3.52237 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.47716, 0, 2.51639 )
 special = true
 
-[node name="OpponentFields" type="Spatial" parent="."]
+[node name="EnemyFields" type="Spatial" parent="."]
 
-[node name="Field1" parent="OpponentFields" instance=ExtResource( 20 )]
+[node name="Field1" parent="EnemyFields" instance=ExtResource( 20 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.488064, 0, -0.469307 )
 
-[node name="Field2" parent="OpponentFields" instance=ExtResource( 20 )]
+[node name="Field2" parent="EnemyFields" instance=ExtResource( 20 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.488064, 0, -1.49159 )
 
-[node name="Field3" parent="OpponentFields" instance=ExtResource( 20 )]
+[node name="Field3" parent="EnemyFields" instance=ExtResource( 20 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.488064, 0, -2.49329 )
 
-[node name="Field4" parent="OpponentFields" instance=ExtResource( 20 )]
+[node name="Field4" parent="EnemyFields" instance=ExtResource( 20 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.488064, 0, -3.51557 )
 special = true
 
-[node name="Field5" parent="OpponentFields" instance=ExtResource( 20 )]
+[node name="Field5" parent="EnemyFields" instance=ExtResource( 20 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45958, 0, -3.51557 )
 
-[node name="Field6" parent="OpponentFields" instance=ExtResource( 20 )]
+[node name="Field6" parent="EnemyFields" instance=ExtResource( 20 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45958, 0, -2.52543 )
 
-[node name="Field7" parent="OpponentFields" instance=ExtResource( 20 )]
+[node name="Field7" parent="EnemyFields" instance=ExtResource( 20 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45958, 0, -1.47961 )
 
-[node name="Field8" parent="OpponentFields" instance=ExtResource( 20 )]
+[node name="Field8" parent="EnemyFields" instance=ExtResource( 20 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45958, 0, -0.489464 )
 special = true
 
-[node name="Field9" parent="OpponentFields" instance=ExtResource( 20 )]
+[node name="Field9" parent="EnemyFields" instance=ExtResource( 20 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45958, 0, 0.506804 )
 
-[node name="Field10" parent="OpponentFields" instance=ExtResource( 20 )]
+[node name="Field10" parent="EnemyFields" instance=ExtResource( 20 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45958, 0, 1.49695 )
 
-[node name="Field11" parent="OpponentFields" instance=ExtResource( 20 )]
+[node name="Field11" parent="EnemyFields" instance=ExtResource( 20 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45958, 0, 2.53222 )
 
-[node name="Field12" parent="OpponentFields" instance=ExtResource( 20 )]
+[node name="Field12" parent="EnemyFields" instance=ExtResource( 20 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45958, 0, 3.52237 )
 
-[node name="Field13" parent="OpponentFields" instance=ExtResource( 20 )]
+[node name="Field13" parent="EnemyFields" instance=ExtResource( 20 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.495539, 0, 3.52237 )
 
-[node name="Field14" parent="OpponentFields" instance=ExtResource( 20 )]
+[node name="Field14" parent="EnemyFields" instance=ExtResource( 20 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.495539, 0, 2.51639 )
 special = true
 
@@ -260,7 +260,6 @@ stream = ExtResource( 9 )
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 10 )
 volume_db = -10.0
-autoplay = true
 
 [node name="TextureButton" type="TextureButton" parent="."]
 anchor_left = 1.0
