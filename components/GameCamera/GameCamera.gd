@@ -3,6 +3,7 @@ class_name GameCamera
 
 export var current: bool = true setget set_current, get_current
 export(float, 0.5, 10.0, 0.5) var rotation_speed = 1
+export var invert_y: bool = false
 export(float, 1, 15, 0.5) var distance = 1
 export(float, 1, 15, 0.5) var height = 1
 export var fov: float setget set_fov
@@ -26,10 +27,10 @@ func _ready():
 	top_down_cam.transform.origin = Vector3(0, height, 0)
 
 func move_cam(movement: Vector2):
-	default_cam.transform.origin.y += -deg2rad(movement.y * rotation_speed)
-	default_cam.transform.origin.z -= -deg2rad(movement.y * rotation_speed)
-	default_cam.transform.origin.y = clamp(default_cam.transform.origin.y, 1.9, height)
-	default_cam.transform.origin.z = clamp(default_cam.transform.origin.z, .5, distance)
+	default_cam.transform.origin.y += deg2rad(movement.y * rotation_speed) * (-1 if !invert_y else 1)
+	default_cam.transform.origin.z -= deg2rad(movement.y * rotation_speed) * (-1 if !invert_y else 1)
+	default_cam.transform.origin.y = clamp(default_cam.transform.origin.y * (-1 if invert_y else 1), 1.9, height)
+	default_cam.transform.origin.z = clamp(default_cam.transform.origin.z * (-1 if invert_y else 1), .5, distance)
 	rotation.y += -deg2rad(movement.x * rotation_speed)
 
 func _input(event):
