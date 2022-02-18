@@ -5,6 +5,7 @@ signal rolled()
 
 var initial_position
 var number
+var roll_finished:bool = false
 
 func _ready():
 	initial_position = global_transform.origin
@@ -18,8 +19,9 @@ func get_rolled_number():
 	return 1 if highest_point.name.begins_with("White") else 0
 
 func _on_Dice_sleeping_state_changed():
-	if is_sleeping():
+	if is_sleeping() and !roll_finished:
 		number = get_rolled_number()
+		roll_finished = true
 		emit_signal("rolled")
 
 func roll():
@@ -31,5 +33,6 @@ func roll():
 	var axis = Vector3(randf(), randf(), randf()).normalized()
 	global_rotate(axis, 3.14)
 	
+	roll_finished = false
 	set_sleeping(false)
 	# emit_signal("rolled", randi() % 2)
