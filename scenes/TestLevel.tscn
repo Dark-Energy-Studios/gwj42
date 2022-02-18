@@ -55,7 +55,7 @@ mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Dice" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.55625, 1.53673, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.87807, 1.53673, 0 )
 
 [node name="Die-1" parent="Dice" instance=ExtResource( 5 )]
 transform = Transform( -0.0297884, 0.999556, 0, -0.999556, -0.0297884, 0, 0, 0, 1, 0, 1.05737, 0 )
@@ -131,97 +131,101 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.838, 0.422, 5.8 )
 team = 1
 
 [node name="PlayerFields" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.267812, 0 )
+visible = false
 
 [node name="Field1" parent="PlayerFields" instance=ExtResource( 20 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.50874, 0, -0.469307 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.50874, 0.428839, -0.469307 )
 
 [node name="Field2" parent="PlayerFields" instance=ExtResource( 20 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.50874, 0, -1.49159 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.50874, 0.428839, -1.49159 )
 
 [node name="Field3" parent="PlayerFields" instance=ExtResource( 20 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.50874, 0, -2.49329 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.50874, 0.428839, -2.49329 )
 
 [node name="Field4" parent="PlayerFields" instance=ExtResource( 20 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.50874, 0, -3.51557 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.50874, 0.428839, -3.51557 )
 special = true
 
 [node name="Field5" parent="PlayerFields" instance=ExtResource( 20 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45958, 0, -3.51557 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45958, 0.428839, -3.51557 )
 
 [node name="Field6" parent="PlayerFields" instance=ExtResource( 20 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45958, 0, -2.52543 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45958, 0.428839, -2.52543 )
 
 [node name="Field7" parent="PlayerFields" instance=ExtResource( 20 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45958, 0, -1.47961 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45958, 0.428839, -1.47961 )
 
 [node name="Field8" parent="PlayerFields" instance=ExtResource( 20 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45958, 0, -0.489464 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.46401, 0.424672, -0.486425 )
 special = true
 
 [node name="Field9" parent="PlayerFields" instance=ExtResource( 20 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45958, 0, 0.506804 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45958, 0.428839, 0.506804 )
 
 [node name="Field10" parent="PlayerFields" instance=ExtResource( 20 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45958, 0, 1.49695 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45958, 0.428839, 1.49695 )
 
 [node name="Field11" parent="PlayerFields" instance=ExtResource( 20 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45958, 0, 2.53222 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45958, 0.428839, 2.53222 )
 
 [node name="Field12" parent="PlayerFields" instance=ExtResource( 20 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45958, 0, 3.52237 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45958, 0.428839, 3.52237 )
 
 [node name="Field13" parent="PlayerFields" instance=ExtResource( 20 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.47716, 0, 3.52237 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.47716, 0.428839, 3.52237 )
 
 [node name="Field14" parent="PlayerFields" instance=ExtResource( 20 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.47716, 0, 2.51639 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.47716, 0.428839, 2.51639 )
 special = true
 
 [node name="EnemyFields" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.267812, 0 )
+visible = false
 
 [node name="Field1" parent="EnemyFields" instance=ExtResource( 20 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.488064, 0, -0.469307 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.488064, 0.428839, -0.469307 )
 
 [node name="Field2" parent="EnemyFields" instance=ExtResource( 20 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.488064, 0, -1.49159 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.488064, 0.428839, -1.49159 )
 
 [node name="Field3" parent="EnemyFields" instance=ExtResource( 20 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.488064, 0, -2.49329 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.488064, 0.428839, -2.49329 )
 
 [node name="Field4" parent="EnemyFields" instance=ExtResource( 20 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.488064, 0, -3.51557 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.488064, 0.428839, -3.51557 )
 special = true
 
 [node name="Field5" parent="EnemyFields" instance=ExtResource( 20 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45958, 0, -3.51557 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45958, 0.428839, -3.51557 )
 
 [node name="Field6" parent="EnemyFields" instance=ExtResource( 20 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45958, 0, -2.52543 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45958, 0.428839, -2.52543 )
 
 [node name="Field7" parent="EnemyFields" instance=ExtResource( 20 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45958, 0, -1.47961 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45958, 0.428839, -1.47961 )
 
 [node name="Field8" parent="EnemyFields" instance=ExtResource( 20 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45958, 0, -0.489464 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45958, 0.428839, -0.489464 )
 special = true
 
 [node name="Field9" parent="EnemyFields" instance=ExtResource( 20 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45958, 0, 0.506804 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45958, 0.428839, 0.506804 )
 
 [node name="Field10" parent="EnemyFields" instance=ExtResource( 20 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45958, 0, 1.49695 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45958, 0.428839, 1.49695 )
 
 [node name="Field11" parent="EnemyFields" instance=ExtResource( 20 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45958, 0, 2.53222 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45958, 0.428839, 2.53222 )
 
 [node name="Field12" parent="EnemyFields" instance=ExtResource( 20 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45958, 0, 3.52237 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45958, 0.428839, 3.52237 )
 
 [node name="Field13" parent="EnemyFields" instance=ExtResource( 20 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.495539, 0, 3.52237 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.495539, 0.428839, 3.52237 )
 
 [node name="Field14" parent="EnemyFields" instance=ExtResource( 20 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.495539, 0, 2.51639 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.495539, 0.428839, 2.51639 )
 special = true
 
 [node name="RerollLabel" type="Label" parent="."]
@@ -261,7 +265,7 @@ stream = ExtResource( 9 )
 stream = ExtResource( 10 )
 volume_db = -10.0
 
-[node name="TextureButton" type="TextureButton" parent="."]
+[node name="RollButton" type="TextureButton" parent="."]
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -150.0
@@ -275,7 +279,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="TextureButton"]
+[node name="Label" type="Label" parent="RollButton"]
 margin_left = 107.5
 margin_top = 120.0
 margin_right = 147.5
@@ -325,7 +329,8 @@ size_flags_vertical = 3
 alignment = 1
 
 [node name="Stones-Player" type="GridContainer" parent="UI/Centered/Panel"]
-margin_right = 132.0
+margin_left = 4.0
+margin_right = 136.0
 margin_bottom = 80.0
 columns = 4
 script = ExtResource( 14 )
@@ -377,11 +382,32 @@ margin_right = 98.0
 margin_bottom = 64.0
 texture = ExtResource( 16 )
 
-[node name="TurnLabel" type="Label" parent="UI/Centered/Panel"]
-margin_left = 136.0
-margin_top = 44.0
-margin_right = 344.0
+[node name="LabelContainer" type="VBoxContainer" parent="UI/Centered/Panel"]
+margin_left = 140.0
+margin_right = 340.0
 margin_bottom = 80.0
+rect_min_size = Vector2( 200, 0 )
+
+[node name="DiceNumberLabel" type="Label" parent="UI/Centered/Panel/LabelContainer"]
+margin_right = 200.0
+margin_bottom = 36.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "0"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TurnLabel" type="Label" parent="UI/Centered/Panel/LabelContainer"]
+margin_top = 40.0
+margin_right = 200.0
+margin_bottom = 76.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
@@ -396,8 +422,8 @@ __meta__ = {
 }
 
 [node name="Stones-Opponent" type="GridContainer" parent="UI/Centered/Panel"]
-margin_left = 348.0
-margin_right = 480.0
+margin_left = 344.0
+margin_right = 476.0
 margin_bottom = 80.0
 columns = 4
 script = ExtResource( 14 )
@@ -459,4 +485,4 @@ margin_right = 132.0
 margin_bottom = 64.0
 texture = ExtResource( 16 )
 
-[connection signal="pressed" from="TextureButton" to="." method="_roll_dice"]
+[connection signal="pressed" from="RollButton" to="." method="_roll_dice"]
