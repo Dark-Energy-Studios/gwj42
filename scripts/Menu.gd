@@ -21,4 +21,5 @@ func _on_GoHomeButton_pressed():
 	$Credits.hide()
 	$Menu.show()
 
-
+func _on_Quit_pressed():
+	get_tree().quit(0)

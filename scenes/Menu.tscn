@@ -90,6 +90,14 @@ rect_min_size = Vector2( 200, 0 )
 custom_fonts/font = SubResource( 2 )
 text = "Rules"
 
+[node name="Quit" type="Button" parent="Menu/List"]
+margin_top = 138.0
+margin_right = 200.0
+margin_bottom = 180.0
+rect_min_size = Vector2( 200, 0 )
+custom_fonts/font = SubResource( 2 )
+text = "Quit"
+
 [node name="Credits" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -276,4 +284,6 @@ autoplay = true
 [connection signal="pressed" from="Menu/List/Play" to="." method="_on_Play_pressed"]
 [connection signal="pressed" from="Menu/List/Credits" to="." method="_on_Credits_pressed"]
 [connection signal="pressed" from="Menu/List/Rules" to="." method="_on_Rules_pressed"]
+[connection signal="pressed" from="Menu/List/Quit" to="." method="_on_Quit_pressed"]
+[connection signal="gui_input" from="Credits" to="." method="_on_Credits_gui_input"]
 [connection signal="pressed" from="Rules/GoHomeButton" to="." method="_on_GoHomeButton_pressed"]
