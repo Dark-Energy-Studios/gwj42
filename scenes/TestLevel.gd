@@ -120,11 +120,11 @@ func _on_chip_clicked(chip):
 		if current_team == globals.Team.PLAYER:
 			player_score += 1
 			$"UI/Centered/Panel/Stones-Player".emit_signal("stones_changed", player_score)
-			$PlayerChipFinished.play()
+			$Jingles/PlayerChipFinished.play()
 		else:
 			enemy_score += 1
 			$"UI/Centered/Panel/Stones-Opponent".emit_signal("stones_changed", enemy_score)
-			$EnemyChipFinished.play()
+			$Jingles/EnemyChipFinished.play()
 		_finish_turn(false)
 		return
 	
@@ -132,7 +132,7 @@ func _on_chip_clicked(chip):
 	var turn_fields = get_fields()["own"]
 	for i in range(chip.position+1,target_index+1):
 		chip.move(target_index, turn_fields[i].global_transform.origin)
-		$TokenSound.play()
+		$Jingles/TokenSound.play()
 		yield(get_tree().create_timer(.3), "timeout")
 	
 	# check if chip kicks out opponent chip
@@ -143,6 +143,7 @@ func _on_chip_clicked(chip):
 		
 	for opponent_chip in get_chips()["opponent"]:
 		if within_range(opponent_chip.position, 4,11) && opponent_chip.position == target_index:
+			$Jingles/KickoutSound.play()
 			opponent_chip.reset()
 	
 	_finish_turn(turn_fields[target_index].special)
@@ -185,11 +186,11 @@ func _on_dice_rolled():
 		opponent_ai.make_move(number, valid_own_chips, turn_chips["opponent"], $EnemyFields.get_children())
 
 func play_dice_sound():
-	if $DiceSound.playing: return
+	if $Jingles/DiceSound.playing: return
 	
 	yield(get_tree().create_timer(.7), "timeout")
-	$DiceSound.stream = dice_sounds[randi() % dice_sounds.size()]
-	$DiceSound.play()
+	$Jingles/DiceSound.stream = dice_sounds[randi() % dice_sounds.size()]
+	$Jingles/DiceSound.play()
 
 func get_chips() -> Dictionary:
 	if current_team == globals.Team.PLAYER:

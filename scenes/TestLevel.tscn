@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://components/Board/Board.tscn" type="PackedScene" id=1]
 [ext_resource path="res://components/Chip/Chip.tscn" type="PackedScene" id=2]
@@ -25,6 +25,7 @@
 [ext_resource path="res://assets/audio/music/heroic_loop.mp3" type="AudioStream" id=23]
 [ext_resource path="res://components/MusicPlayer/MusicPlayer.tscn" type="PackedScene" id=24]
 [ext_resource path="res://assets/visual/table.png" type="Texture" id=25]
+[ext_resource path="res://assets/audio/sound/kick_out.mp3" type="AudioStream" id=26]
 
 [sub_resource type="BoxShape" id=1]
 
@@ -259,26 +260,6 @@ transform = Transform( 0.128588, -0.379506, -0.91621, 0, 0.92388, -0.382683, 0.9
 distance = 3.0
 height = 5.0
 fov = 70.0
-
-[node name="DiceSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 7 )
-bus = "Jingles"
-
-[node name="TurnSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 8 )
-bus = "Jingles"
-
-[node name="TokenSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 9 )
-bus = "Jingles"
-
-[node name="PlayerChipFinished" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource( 4 )
-bus = "Buttons"
-
-[node name="EnemyChipFinished" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource( 21 )
-bus = "Buttons"
 
 [node name="RollButton" type="TextureButton" parent="."]
 anchor_left = 1.0
@@ -614,5 +595,31 @@ Use the Arrow Keys to Move the Camera"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Jingles" type="Node" parent="."]
+
+[node name="PlayerChipFinished" type="AudioStreamPlayer3D" parent="Jingles"]
+stream = ExtResource( 4 )
+bus = "Buttons"
+
+[node name="EnemyChipFinished" type="AudioStreamPlayer3D" parent="Jingles"]
+stream = ExtResource( 21 )
+bus = "Buttons"
+
+[node name="DiceSound" type="AudioStreamPlayer" parent="Jingles"]
+stream = ExtResource( 7 )
+bus = "Jingles"
+
+[node name="TurnSound" type="AudioStreamPlayer" parent="Jingles"]
+stream = ExtResource( 8 )
+bus = "Jingles"
+
+[node name="TokenSound" type="AudioStreamPlayer" parent="Jingles"]
+stream = ExtResource( 9 )
+bus = "Jingles"
+
+[node name="KickoutSound" type="AudioStreamPlayer" parent="Jingles"]
+stream = ExtResource( 26 )
+volume_db = -10.0
 
 [connection signal="pressed" from="RollButton" to="." method="_roll_dice"]
