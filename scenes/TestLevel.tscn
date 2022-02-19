@@ -3,7 +3,6 @@
 [ext_resource path="res://components/Board/Board.tscn" type="PackedScene" id=1]
 [ext_resource path="res://components/Chip/Chip.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/TestLevel.gd" type="Script" id=3]
-[ext_resource path="res://components/GameController/GameController.tscn" type="PackedScene" id=4]
 [ext_resource path="res://components/Die/Die.tscn" type="PackedScene" id=5]
 [ext_resource path="res://components/GameCamera/GameCamera.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/audio/sound/dice_roll_1.mp3" type="AudioStream" id=7]
@@ -19,6 +18,7 @@
 [ext_resource path="res://assets/visual/Stone_White.png" type="Texture" id=17]
 [ext_resource path="res://assets/visual/Die.png" type="Texture" id=18]
 [ext_resource path="res://assets/visual/Die_Hover.png" type="Texture" id=19]
+[ext_resource path="res://components/Field/Field.tscn" type="PackedScene" id=20]
 
 [sub_resource type="BoxShape" id=1]
 
@@ -39,12 +39,6 @@ font_data = ExtResource( 12 )
 [node name="TestLevel" type="Spatial"]
 script = ExtResource( 3 )
 
-[node name="GameController" parent="." instance=ExtResource( 4 )]
-player_chips_path = NodePath("../PlayerChips")
-enemy_chips_path = NodePath("../EnemyChips")
-board_path = NodePath("../Board")
-dice_path = NodePath("../Dice")
-
 [node name="Board" parent="." instance=ExtResource( 1 )]
 
 [node name="Table" type="StaticBody" parent="."]
@@ -61,7 +55,7 @@ mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Dice" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.55625, 1.53673, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.87807, 1.53673, 0 )
 
 [node name="Die-1" parent="Dice" instance=ExtResource( 5 )]
 transform = Transform( -0.0297884, 0.999556, 0, -0.999556, -0.0297884, 0, 0, 0, 1, 0, 1.05737, 0 )
@@ -81,11 +75,26 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Chip" parent="PlayerChips" instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8377, 0.422113, -2.77298 )
+[node name="Chip1" parent="PlayerChips" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.838, 0.422, -4 )
 
 [node name="Chip2" parent="PlayerChips" instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.88128, 0.426465, -1.98025 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.881, 0.426, -3.3 )
+
+[node name="Chip3" parent="PlayerChips" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.838, 0.422, -2.6 )
+
+[node name="Chip4" parent="PlayerChips" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.881, 0.426, -1.9 )
+
+[node name="Chip5" parent="PlayerChips" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.881, 0.426, -1.2 )
+
+[node name="Chip6" parent="PlayerChips" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.838, 0.422, -0.5 )
+
+[node name="Chip7" parent="PlayerChips" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.881, 0.426, 0.2 )
 
 [node name="EnemyChips" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.04212, -0.759192, -5.43938 )
@@ -93,13 +102,149 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Chip" parent="EnemyChips" instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8377, 0.422113, 2.63133 )
+[node name="Chip1" parent="EnemyChips" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.838, 0.422, 1.6 )
 team = 1
 
 [node name="Chip2" parent="EnemyChips" instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8377, 0.422113, 3.39579 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.838, 0.422, 2.3 )
 team = 1
+
+[node name="Chip3" parent="EnemyChips" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.838, 0.422, 3 )
+team = 1
+
+[node name="Chip4" parent="EnemyChips" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.838, 0.422, 3.7 )
+team = 1
+
+[node name="Chip5" parent="EnemyChips" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.838, 0.422, 4.4 )
+team = 1
+
+[node name="Chip6" parent="EnemyChips" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.838, 0.422, 5.1 )
+team = 1
+
+[node name="Chip7" parent="EnemyChips" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.838, 0.422, 5.8 )
+team = 1
+
+[node name="PlayerFields" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.267812, 0 )
+visible = false
+
+[node name="Field1" parent="PlayerFields" instance=ExtResource( 20 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.50874, 0.428839, -0.469307 )
+
+[node name="Field2" parent="PlayerFields" instance=ExtResource( 20 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.50874, 0.428839, -1.49159 )
+
+[node name="Field3" parent="PlayerFields" instance=ExtResource( 20 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.50874, 0.428839, -2.49329 )
+
+[node name="Field4" parent="PlayerFields" instance=ExtResource( 20 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.50874, 0.428839, -3.51557 )
+special = true
+
+[node name="Field5" parent="PlayerFields" instance=ExtResource( 20 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45958, 0.428839, -3.51557 )
+
+[node name="Field6" parent="PlayerFields" instance=ExtResource( 20 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45958, 0.428839, -2.52543 )
+
+[node name="Field7" parent="PlayerFields" instance=ExtResource( 20 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45958, 0.428839, -1.47961 )
+
+[node name="Field8" parent="PlayerFields" instance=ExtResource( 20 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.46401, 0.424672, -0.486425 )
+special = true
+
+[node name="Field9" parent="PlayerFields" instance=ExtResource( 20 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45958, 0.428839, 0.506804 )
+
+[node name="Field10" parent="PlayerFields" instance=ExtResource( 20 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45958, 0.428839, 1.49695 )
+
+[node name="Field11" parent="PlayerFields" instance=ExtResource( 20 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45958, 0.428839, 2.53222 )
+
+[node name="Field12" parent="PlayerFields" instance=ExtResource( 20 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45958, 0.428839, 3.52237 )
+
+[node name="Field13" parent="PlayerFields" instance=ExtResource( 20 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.47716, 0.428839, 3.52237 )
+
+[node name="Field14" parent="PlayerFields" instance=ExtResource( 20 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.47716, 0.428839, 2.51639 )
+special = true
+
+[node name="EnemyFields" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.267812, 0 )
+visible = false
+
+[node name="Field1" parent="EnemyFields" instance=ExtResource( 20 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.488064, 0.428839, -0.469307 )
+
+[node name="Field2" parent="EnemyFields" instance=ExtResource( 20 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.488064, 0.428839, -1.49159 )
+
+[node name="Field3" parent="EnemyFields" instance=ExtResource( 20 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.488064, 0.428839, -2.49329 )
+
+[node name="Field4" parent="EnemyFields" instance=ExtResource( 20 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.488064, 0.428839, -3.51557 )
+special = true
+
+[node name="Field5" parent="EnemyFields" instance=ExtResource( 20 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45958, 0.428839, -3.51557 )
+
+[node name="Field6" parent="EnemyFields" instance=ExtResource( 20 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45958, 0.428839, -2.52543 )
+
+[node name="Field7" parent="EnemyFields" instance=ExtResource( 20 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45958, 0.428839, -1.47961 )
+
+[node name="Field8" parent="EnemyFields" instance=ExtResource( 20 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45958, 0.428839, -0.489464 )
+special = true
+
+[node name="Field9" parent="EnemyFields" instance=ExtResource( 20 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45958, 0.428839, 0.506804 )
+
+[node name="Field10" parent="EnemyFields" instance=ExtResource( 20 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45958, 0.428839, 1.49695 )
+
+[node name="Field11" parent="EnemyFields" instance=ExtResource( 20 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45958, 0.428839, 2.53222 )
+
+[node name="Field12" parent="EnemyFields" instance=ExtResource( 20 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45958, 0.428839, 3.52237 )
+
+[node name="Field13" parent="EnemyFields" instance=ExtResource( 20 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.495539, 0.428839, 3.52237 )
+
+[node name="Field14" parent="EnemyFields" instance=ExtResource( 20 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.495539, 0.428839, 2.51639 )
+special = true
+
+[node name="RerollLabel" type="Label" parent="."]
+margin_right = 40.0
+margin_bottom = 14.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Press 'R' to reroll"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TurnLabel" type="Label" parent="."]
+margin_top = 17.0
+margin_right = 40.0
+margin_bottom = 31.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="GameCamera" parent="." instance=ExtResource( 6 )]
 transform = Transform( 0.128588, -0.379506, -0.91621, 0, 0.92388, -0.382683, 0.991698, 0.0492085, 0.1188, -2, 0, 0.324738 )
@@ -121,7 +266,7 @@ stream = ExtResource( 10 )
 volume_db = -10.0
 autoplay = true
 
-[node name="TextureButton" type="TextureButton" parent="."]
+[node name="RollButton" type="TextureButton" parent="."]
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -150.0
@@ -135,7 +280,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="TextureButton"]
+[node name="Label" type="Label" parent="RollButton"]
 margin_left = 107.5
 margin_top = 120.0
 margin_right = 147.5
@@ -185,7 +330,8 @@ size_flags_vertical = 3
 alignment = 1
 
 [node name="Stones-Player" type="GridContainer" parent="UI/Centered/Panel"]
-margin_right = 132.0
+margin_left = 4.0
+margin_right = 136.0
 margin_bottom = 80.0
 columns = 4
 script = ExtResource( 14 )
@@ -237,11 +383,32 @@ margin_right = 98.0
 margin_bottom = 64.0
 texture = ExtResource( 16 )
 
-[node name="TurnLabel" type="Label" parent="UI/Centered/Panel"]
-margin_left = 136.0
-margin_top = 44.0
-margin_right = 344.0
+[node name="LabelContainer" type="VBoxContainer" parent="UI/Centered/Panel"]
+margin_left = 140.0
+margin_right = 340.0
 margin_bottom = 80.0
+rect_min_size = Vector2( 200, 0 )
+
+[node name="DiceNumberLabel" type="Label" parent="UI/Centered/Panel/LabelContainer"]
+margin_right = 200.0
+margin_bottom = 36.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "0"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TurnLabel" type="Label" parent="UI/Centered/Panel/LabelContainer"]
+margin_top = 40.0
+margin_right = 200.0
+margin_bottom = 76.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
@@ -256,8 +423,8 @@ __meta__ = {
 }
 
 [node name="Stones-Opponent" type="GridContainer" parent="UI/Centered/Panel"]
-margin_left = 348.0
-margin_right = 480.0
+margin_left = 344.0
+margin_right = 476.0
 margin_bottom = 80.0
 columns = 4
 script = ExtResource( 14 )
@@ -319,5 +486,4 @@ margin_right = 132.0
 margin_bottom = 64.0
 texture = ExtResource( 16 )
 
-[connection signal="switch_turn" from="GameController" to="." method="_on_GameController_switch_turn"]
-[connection signal="pressed" from="TextureButton" to="." method="_roll_dice"]
+[connection signal="pressed" from="RollButton" to="." method="_roll_dice"]
