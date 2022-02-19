@@ -15,7 +15,10 @@ var opponent_ai = BaseAI.new()
 var initial_camera_pos
 var initial_camera_angle
 
+const DICE_NUMBER_IDLE = "+"
+
 func _ready():
+	$UI/Centered/Panel/LabelContainer/DiceNumberLabel.text = DICE_NUMBER_IDLE
 	initial_camera_pos = $GameCamera.transform.origin
 	initial_camera_angle = $GameCamera.rotation
 	
@@ -84,12 +87,13 @@ func _finish_turn(reroll:bool):
 	else:
 		$MusicPlayer.play("agressive")
 	
+	$UI/Centered/Panel/LabelContainer/DiceNumberLabel.text =  DICE_NUMBER_IDLE
+	
 	if current_team == globals.Team.PLAYER:
 		$RollButton.disabled = false
 	else:
+		yield(get_tree().create_timer(0.5), "timeout")
 		_roll_dice()
-	
-
 
 func _on_chip_clicked(chip):
 	# freeze all chips while player has choosen one
@@ -110,8 +114,6 @@ func _on_chip_clicked(chip):
 		target_index = chip.position + dice_number
 		print("move chip on board to %d + %d = %d" % [chip.position, dice_number, target_index])
 		
-	
-
 	# check if chip has finished
 	if target_index == $PlayerFields.get_child_count():
 		# remove stone
