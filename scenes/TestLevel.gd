@@ -61,11 +61,18 @@ func _finish_turn(reroll:bool):
 			current_team = globals.Team.PLAYER
 		
 	$UI/Centered/Panel/LabelContainer/TurnLabel.text = "Turn of %s" % globals.team_to_string(current_team)
+	if player_score == enemy_score:
+		$MusicPlayer.play("default")
+	elif player_score > enemy_score:
+		$MusicPlayer.play("heroic")
+	else:
+		$MusicPlayer.play("agressive")
 	
 	if current_team == globals.Team.PLAYER:
 		$RollButton.disabled = false
 	else:
 		_roll_dice()
+	
 
 
 func _on_chip_clicked(chip):
@@ -157,7 +164,7 @@ func _on_dice_rolled():
 
 	# for ai: just pass all possible chips
 	if current_team == globals.Team.ENEMY:
-		opponent_ai.make_move(number, valid_own_chips, turn_chips["opponent"])
+		opponent_ai.make_move(number, valid_own_chips, turn_chips["opponent"], $EnemyFields.get_children())
 
 func play_dice_sound():
 	if $DiceSound.playing: return

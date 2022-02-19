@@ -30,9 +30,9 @@ _global_script_classes=[ {
 "path": "res://components/Die/Die.gd"
 }, {
 "base": "Node",
-"class": "GameController",
+"class": "MusicPlayer",
 "language": "GDScript",
-"path": "res://components/GameController/GameController.gd"
+"path": "res://components/MusicPlayer/MusicPlayer.gd"
 }, {
 "base": "BaseAI",
 "class": "TchiboAI",
@@ -44,7 +44,7 @@ _global_script_class_icons={
 "BoardObject": "",
 "Chip": "",
 "Die": "",
-"GameController": "",
+"MusicPlayer": "",
 "TchiboAI": ""
 }
 
@@ -52,7 +52,7 @@ _global_script_class_icons={
 
 config/name="GWJ42"
 run/main_scene="res://scenes/Menu.tscn"
-config/icon="res://icon.png"
+config/icon="res://assets/visual/Die.png"
 
 [autoload]
 

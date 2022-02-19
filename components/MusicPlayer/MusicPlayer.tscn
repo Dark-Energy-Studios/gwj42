@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://components/MusicPlayer/MusicPlayer.gd" type="Script" id=1]
+[ext_resource path="res://assets/audio/music/background_loop.mp3" type="AudioStream" id=2]
+[ext_resource path="res://assets/audio/music/heroic_loop.mp3" type="AudioStream" id=3]
+[ext_resource path="res://assets/audio/music/agressive_loop.mp3" type="AudioStream" id=4]
+
+[node name="MusicPlayer" type="Node"]
+script = ExtResource( 1 )
+tracks = {
+"agressive": ExtResource( 4 ),
+"default": ExtResource( 2 ),
+"heroic": ExtResource( 3 )
+}
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+
+[connection signal="tween_all_completed" from="Tween" to="." method="_on_Tween_tween_all_completed"]

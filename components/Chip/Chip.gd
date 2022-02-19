@@ -5,10 +5,16 @@ signal clicked(chip)
 
 export var clickable: bool
 export (globals.Team) var team
+export (int) var position = -1
 export var hover_height: float = 0.1
+export var move_height: float = 0.5
 var hovered: bool = false
 
 var mesh: MeshInstance
+
+# if chip is kicked-off the board by the opponent, 
+# the chip should return to its initial position
+var initial_position:Transform
 
 func _ready():
 	if team == globals.Team.PLAYER:
@@ -18,6 +24,18 @@ func _ready():
 		$PlayerMesh.queue_free()
 		mesh = $EnemyMesh
 		mesh.show()
+
+	initial_position = self.global_transform
+
+func reset():
+	self.global_transform = initial_position
+	self.position = -1
+	set_sleeping(false)
+
+func move(target_index:int, target_position:Vector3):
+	self.global_transform.origin = target_position
+	self.position = target_index
+	set_sleeping(false)
 
 func _on_Chip_mouse_entered():
 	if clickable and not hovered:
