@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/kick_out.mp3-a48d394b7853127d7766d9a5da0bfbcd.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/sound/kick_out.mp3"
+dest_files=[ "res://.import/kick_out.mp3-a48d394b7853127d7766d9a5da0bfbcd.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

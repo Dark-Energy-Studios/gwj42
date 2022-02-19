@@ -7,7 +7,6 @@ export var clickable: bool
 export (globals.Team) var team
 export (int) var position = -1
 export var hover_height: float = 0.1
-export var move_height: float = 0.5
 var hovered: bool = false
 
 var mesh: MeshInstance
