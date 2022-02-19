@@ -157,7 +157,7 @@ func _on_dice_rolled():
 
 	# for ai: just pass all possible chips
 	if current_team == globals.Team.ENEMY:
-		opponent_ai.make_move(number, valid_own_chips, turn_chips["opponent"], $EnemyChips.get_children())
+		opponent_ai.make_move(number, valid_own_chips, turn_chips["opponent"], $EnemyFields.get_children())
 
 func play_dice_sound():
 	if $DiceSound.playing: return
