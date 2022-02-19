@@ -257,12 +257,21 @@ fov = 70.0
 
 [node name="DiceSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
+bus = "Jingles"
 
 [node name="TurnSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
+bus = "Jingles"
 
 [node name="TokenSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 9 )
+bus = "Jingles"
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+volume_db = -10.0
+autoplay = true
+bus = "Music"
 
 [node name="RollButton" type="TextureButton" parent="."]
 anchor_left = 1.0
