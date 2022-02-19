@@ -141,19 +141,23 @@ func _on_dice_rolled():
 		return
 	
 	# check movability of each chip with the rolled dice number
-	# for player: if chip is not movable, it won't be clickable
-	# for ai: just pass all possible chips
 	var turn_chips = get_chips()
-	if current_team == globals.Team.PLAYER:
-		for chip in turn_chips["own"]:
-			chip.clickable = is_valid_move(chip, number)
-	else:
-		var valid_own_chips = []
-		for chip in turn_chips["own"]:
-			if is_valid_move(chip, number):
-				valid_own_chips.append(chip)
-		opponent_ai.make_move(number, valid_own_chips, turn_chips["opponent"])
+	var valid_own_chips = []
+	for chip in turn_chips["own"]:
+		if is_valid_move(chip, number):
+			valid_own_chips.append(chip)
+			chip.clickable = true
+		else:
+			chip.clickable = false
 
+	# finish turn if there are no valid turns
+	if valid_own_chips.size() == 0:
+		_finish_turn(false)
+		return
+
+	# for ai: just pass all possible chips
+	if current_team == globals.Team.ENEMY:
+		opponent_ai.make_move(number, valid_own_chips, turn_chips["opponent"])
 
 func play_dice_sound():
 	if $DiceSound.playing: return
