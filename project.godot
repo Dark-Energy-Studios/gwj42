@@ -12,7 +12,7 @@ _global_script_classes=[ {
 "base": "Object",
 "class": "BaseAI",
 "language": "GDScript",
-"path": "res://components/BaseAI/BaseAI.gd"
+"path": "res://components/AI/BaseAI.gd"
 }, {
 "base": "Node",
 "class": "BoardObject",
@@ -33,13 +33,19 @@ _global_script_classes=[ {
 "class": "GameController",
 "language": "GDScript",
 "path": "res://components/GameController/GameController.gd"
+}, {
+"base": "BaseAI",
+"class": "JohannesAI",
+"language": "GDScript",
+"path": "res://components/AI/JohannesAI.gd"
 } ]
 _global_script_class_icons={
 "BaseAI": "",
 "BoardObject": "",
 "Chip": "",
 "Die": "",
-"GameController": ""
+"GameController": "",
+"JohannesAI": ""
 }
 
 [application]
