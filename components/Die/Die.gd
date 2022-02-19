@@ -9,6 +9,7 @@ var roll_finished:bool = false
 
 func _ready():
 	initial_position = global_transform.origin
+	scale = Vector3(0.6, 0.6, 0.6)
 	
 func get_rolled_number():
 	var highest_point: Position3D = null

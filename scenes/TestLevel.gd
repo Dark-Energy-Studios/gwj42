@@ -12,8 +12,13 @@ var player_score: int = 0
 var enemy_score: int = 0
 
 var opponent_ai = BaseAI.new()
+var initial_camera_pos
+var initial_camera_angle
 
 func _ready():
+	initial_camera_pos = $GameCamera.transform.origin
+	initial_camera_angle = $GameCamera.rotation
+	
 	$UI/Centered/Panel/LabelContainer/TurnLabel.text = "Turn of %s" % globals.team_to_string(current_team)
 	
 	# let all dice call our _on_dice_rolled function if roll has been finished
@@ -27,13 +32,24 @@ func _ready():
 	for chip in $EnemyChips.get_children():
 		chip.connect("clicked", self, "_on_chip_clicked")
 
-func _process(_delta):
+func _input(event):
+	if (event is InputEventKey or event is InputEventMouseButton) and event.pressed:
+		$HelpOverlay.hide()
+
+func _process(_delta):	
 	# TODO: drop dice roll by key
 	if Input.is_action_just_pressed("r_key"):
 		_roll_dice()
-	if Input.is_action_just_pressed("ui_accept"):
-		$"UI/Centered/Panel/Stones-Opponent".emit_signal("stones_changed", 5)
-		$"UI/Centered/Panel/Stones-Player".emit_signal("stones_changed", 3)
+	if Input.is_action_just_pressed("h_key"):
+		_toggle_help()
+			
+func _toggle_help():
+	if $HelpOverlay.visible:
+		$HelpOverlay.hide()
+	else:
+		$GameCamera.transform.origin = initial_camera_pos
+		$GameCamera.rotation = initial_camera_angle		
+		$HelpOverlay.show()	
 
 # trigger dice roll
 func _roll_dice():

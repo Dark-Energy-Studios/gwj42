@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://components/Board/Board.tscn" type="PackedScene" id=1]
 [ext_resource path="res://components/Chip/Chip.tscn" type="PackedScene" id=2]
@@ -24,14 +24,23 @@
 [ext_resource path="res://assets/audio/music/agressive_loop.mp3" type="AudioStream" id=22]
 [ext_resource path="res://assets/audio/music/heroic_loop.mp3" type="AudioStream" id=23]
 [ext_resource path="res://components/MusicPlayer/MusicPlayer.tscn" type="PackedScene" id=24]
+[ext_resource path="res://assets/visual/table.png" type="Texture" id=25]
 
 [sub_resource type="BoxShape" id=1]
+
+[sub_resource type="PlaneMesh" id=8]
+
+[sub_resource type="SpatialMaterial" id=9]
+albedo_texture = ExtResource( 25 )
 
 [sub_resource type="SpatialMaterial" id=2]
 albedo_color = Color( 0.513726, 0.513726, 0.513726, 1 )
 
 [sub_resource type="CubeMesh" id=3]
 material = SubResource( 2 )
+
+[sub_resource type="SpatialMaterial" id=7]
+albedo_color = Color( 0.384314, 0.384314, 0.384314, 1 )
 
 [sub_resource type="DynamicFont" id=5]
 size = 25
@@ -41,13 +50,19 @@ font_data = ExtResource( 12 )
 size = 30
 font_data = ExtResource( 12 )
 
+[sub_resource type="DynamicFont" id=6]
+size = 20
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 12 )
+
 [node name="TestLevel" type="Spatial"]
 script = ExtResource( 3 )
 
 [node name="Board" parent="." instance=ExtResource( 1 )]
 
 [node name="Table" type="StaticBody" parent="."]
-transform = Transform( 7, 0, 0, 0, 0.1, 0, 0, 0, 7, -1.5, -0.944855, 0 )
+transform = Transform( 8, 0, 0, 0, 0.1, 0, 0, 0, 12, -1.5, -0.944855, 0 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -55,15 +70,21 @@ __meta__ = {
 [node name="CollisionShape" type="CollisionShape" parent="Table"]
 shape = SubResource( 1 )
 
-[node name="MeshInstance" type="MeshInstance" parent="Table"]
+[node name="TableTop" type="MeshInstance" parent="Table"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.01666, 0 )
+mesh = SubResource( 8 )
+skeleton = NodePath("../TableBottom")
+material/0 = SubResource( 9 )
+
+[node name="TableBottom" type="MeshInstance" parent="Table"]
 mesh = SubResource( 3 )
-material/0 = null
+material/0 = SubResource( 7 )
 
 [node name="Dice" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.87807, 1.53673, 0 )
+transform = Transform( 0.051203, 0, -0.998688, 0, 1, 0, 0.998688, 0, 0.051203, 0.120504, 1.23164, -5.93411 )
 
 [node name="Die-1" parent="Dice" instance=ExtResource( 5 )]
-transform = Transform( -0.0297884, 0.999556, 0, -0.999556, -0.0297884, 0, 0, 0, 1, 0, 1.05737, 0 )
+transform = Transform( -0.0297884, 0.999556, 0, -0.999556, -0.0297884, 0, 0, 0, 1, 0.339648, 1.05737, 0.0174139 )
 
 [node name="Die-2" parent="Dice" instance=ExtResource( 5 )]
 transform = Transform( 0.48105, -0.521194, -0.704945, 0, 0.804096, -0.5945, 0.876693, 0.285984, 0.38681, 0, 0.892052, -1.83234 )
@@ -232,24 +253,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.495539, 0.428839, 3.52237 )
 [node name="Field14" parent="EnemyFields" instance=ExtResource( 20 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.495539, 0.428839, 2.51639 )
 special = true
-
-[node name="RerollLabel" type="Label" parent="."]
-margin_right = 40.0
-margin_bottom = 14.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Press 'R' to reroll"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TurnLabel" type="Label" parent="."]
-margin_top = 17.0
-margin_right = 40.0
-margin_bottom = 31.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="GameCamera" parent="." instance=ExtResource( 6 )]
 transform = Transform( 0.128588, -0.379506, -0.91621, 0, 0.92388, -0.382683, 0.991698, 0.0492085, 0.1188, -2, 0, 0.324738 )
@@ -512,5 +515,110 @@ tracks = {
 volume_db = -10.0
 autoplay = true
 autoplay_key = "default"
+
+[node name="HelpOverlay" type="Control" parent="."]
+margin_right = 1024.0
+margin_bottom = 600.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="1-Turn-and-Score" type="Label" parent="HelpOverlay"]
+margin_left = 418.0
+margin_top = 123.0
+margin_right = 655.0
+margin_bottom = 174.0
+custom_fonts/font = SubResource( 6 )
+text = "Above you can see whos turn it is
+and what you rolled (0-4)"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="2-Dice" type="Label" parent="HelpOverlay"]
+margin_left = 862.0
+margin_top = 139.0
+margin_right = 1072.0
+margin_bottom = 163.0
+custom_fonts/font = SubResource( 6 )
+text = "Click here to roll"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="3-Chips" type="Label" parent="HelpOverlay"]
+margin_left = 76.0
+margin_top = 461.0
+margin_right = 291.0
+margin_bottom = 512.0
+custom_fonts/font = SubResource( 6 )
+text = "These are your chips. 
+Your opponent has black"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="4-Spawn" type="Label" parent="HelpOverlay"]
+margin_left = 414.0
+margin_top = 372.0
+margin_right = 661.0
+margin_bottom = 504.0
+custom_fonts/font = SubResource( 6 )
+text = "Left is your Start, Right your Goal
+(1 Step after the Die Field)
+You need an exact roll to get home
+You move clockwise
+	"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="5-Reroll" type="Label" parent="HelpOverlay"]
+margin_left = 34.0
+margin_top = 251.0
+margin_right = 249.0
+margin_bottom = 302.0
+custom_fonts/font = SubResource( 6 )
+text = "If you land on a Die field
+you can roll again"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="6-Fight" type="Label" parent="HelpOverlay"]
+margin_left = 690.0
+margin_top = 253.0
+margin_right = 1016.0
+margin_bottom = 331.0
+custom_fonts/font = SubResource( 6 )
+text = "On the red lane you can kick out enemy chips,
+Hint: the Die-Field, it's a safe  spot"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="7-Score" type="Label" parent="HelpOverlay"]
+margin_left = 95.0
+margin_top = 12.0
+margin_right = 403.0
+margin_bottom = 90.0
+custom_fonts/font = SubResource( 6 )
+text = "You win if you bring 
+all 7 Chips home"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="H-Help" type="Label" parent="HelpOverlay"]
+margin_left = 706.0
+margin_top = 539.0
+margin_right = 1014.0
+margin_bottom = 617.0
+custom_fonts/font = SubResource( 6 )
+text = "Press H to toggle this help Screen
+Use the Arrow Keys to Move the Camera"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [connection signal="pressed" from="RollButton" to="." method="_roll_dice"]
