@@ -23,8 +23,7 @@ func _ready():
 	else:
 		$PlayerMesh.queue_free()
 		mesh = $EnemyMesh
-		mesh.show()
-
+	mesh.show()
 	initial_position = self.global_transform
 
 func reset():
