@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/enemy_won_game.mp3-9e4fdfcdd9cb330434070c3b423fc39f.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/sound/enemy_won_game.mp3"
+dest_files=[ "res://.import/enemy_won_game.mp3-9e4fdfcdd9cb330434070c3b423fc39f.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0
