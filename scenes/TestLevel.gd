@@ -140,7 +140,7 @@ func _on_chip_clicked(chip):
 	
 	# check if chip kicks out opponent chip
 	# early return on non-overlapping fields
-	if !within_range(target_index, 4, 10):
+	if !within_range(target_index, 4, 11):
 		_finish_turn(turn_fields[target_index].special)
 		return
 		
