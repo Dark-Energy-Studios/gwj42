@@ -1,9 +1,9 @@
 extends BaseAI
-class_name JohannesAI
+class_name TchiboAI
 
 
 func _init():
-	name = "Johannes"
+	name = "Tch1b0"
 
 func get_chips_positions(chips) -> Array:
 	var positions := []

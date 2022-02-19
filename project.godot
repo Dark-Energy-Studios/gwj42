@@ -35,9 +35,9 @@ _global_script_classes=[ {
 "path": "res://components/GameController/GameController.gd"
 }, {
 "base": "BaseAI",
-"class": "JohannesAI",
+"class": "TchiboAI",
 "language": "GDScript",
-"path": "res://components/AI/JohannesAI.gd"
+"path": "res://components/AI/TchiboAI.gd"
 } ]
 _global_script_class_icons={
 "BaseAI": "",
@@ -45,7 +45,7 @@ _global_script_class_icons={
 "Chip": "",
 "Die": "",
 "GameController": "",
-"JohannesAI": ""
+"TchiboAI": ""
 }
 
 [application]
