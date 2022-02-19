@@ -19,7 +19,7 @@ func make_move(dice_roll: int, ai_chips, player_chips, _fields):
 			if ai_chip.position + dice_roll == player_chip.position:
 				_trigger_move(ai_chip)
 				return
-	
+
 	# if there are at least 3 ai-chips currently on the filed
 	if ai_chips.size() - get_chips_positions(ai_chips).count(-1) >= 3:
 		for chip in ai_chips:
