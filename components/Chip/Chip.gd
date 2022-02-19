@@ -38,6 +38,9 @@ func move(target_index:int, target_position:Vector3):
 	set_sleeping(false)
 
 func _on_Chip_mouse_entered():
+	# don't allow interactions with enemy chip
+	if team == globals.Team.ENEMY: return
+	
 	if clickable and not hovered:
 		mesh.global_transform.origin += Vector3(0, hover_height, 0)
 		set_sleeping(true)
@@ -53,10 +56,14 @@ func _on_Chip_mouse_entered():
 		hover_sound.play()
 
 func _process(_delta):
+	# don't allow interactions with enemy chip
+	if team == globals.Team.ENEMY: return
 	if Input.is_action_just_pressed("left_click") and clickable and hovered:
 		emit_signal("clicked", self)
 
 func _on_Chip_mouse_exited():
+	# don't allow interactions with enemy chip
+	if team == globals.Team.ENEMY: return
 	if hovered:
 		mesh.global_transform.origin -= Vector3(0, hover_height, 0)
 		set_sleeping(false)
