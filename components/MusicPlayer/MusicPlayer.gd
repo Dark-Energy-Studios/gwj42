@@ -42,3 +42,4 @@ func _on_Tween_tween_all_completed():
 	var tmp = current_player
 	current_player = passive_player
 	passive_player = tmp
+	passive_player.stop()
