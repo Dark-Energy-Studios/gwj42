@@ -101,7 +101,6 @@ func _on_chip_clicked(chip):
 		for chip in $PlayerChips.get_children():
 			chip.clickable = false
 	
-	print("clicked on " + str(chip))
 	var target_index = 0
 	var dice_number = 0
 	for die in $Dice.get_children():
@@ -109,10 +108,8 @@ func _on_chip_clicked(chip):
 
 	if chip.position == -1:
 		target_index = dice_number-1
-		print("move chip from start to %d -1 = %d" % [dice_number, target_index])
 	else:
 		target_index = chip.position + dice_number
-		print("move chip on board to %d + %d = %d" % [chip.position, dice_number, target_index])
 		
 	# check if chip has finished
 	if target_index == $PlayerFields.get_child_count():
@@ -159,7 +156,6 @@ func _on_dice_rolled():
 	var number = 0
 	for die in $Dice.get_children():
 		if !die.is_sleeping(): return
-		print(str(die) + " has rolled " + str(die.number))
 		number += die.number
 
 	$UI/Centered/Panel/LabelContainer/DiceNumberLabel.text = str(number)
