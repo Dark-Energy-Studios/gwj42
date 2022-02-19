@@ -196,7 +196,6 @@ margin_top = -280.5
 margin_right = 438.5
 margin_bottom = 280.5
 rect_pivot_offset = Vector2( -343, 198 )
-hint_tooltip = "rw.."
 custom_constants/separation = 20
 __meta__ = {
 "_edit_use_anchors_": false
