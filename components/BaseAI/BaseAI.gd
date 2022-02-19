@@ -15,5 +15,7 @@ func _trigger_move(chip):
 	chip.emit_signal("mouse_entered")
 	yield(chip.get_tree().create_timer(0.5), "timeout")
 	chip.emit_signal("clicked", chip)
-	yield(chip.get_tree().create_timer(0.5), "timeout")
-	chip.emit_signal("mouse_exited")
+	
+	# chip gets freed on finishing the board, so null-check first
+	if is_instance_valid(chip): yield(chip.get_tree().create_timer(0.5), "timeout")
+	if is_instance_valid(chip): chip.emit_signal("mouse_exited")
