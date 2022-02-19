@@ -105,9 +105,11 @@ func _on_chip_clicked(chip):
 		if current_team == globals.Team.PLAYER:
 			player_score += 1
 			$"UI/Centered/Panel/Stones-Player".emit_signal("stones_changed", player_score)
+			$PlayerChipFinished.play()
 		else:
 			enemy_score += 1
 			$"UI/Centered/Panel/Stones-Opponent".emit_signal("stones_changed", enemy_score)
+			$EnemyChipFinished.play()
 		_finish_turn(false)
 		return
 	
