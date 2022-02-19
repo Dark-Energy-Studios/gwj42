@@ -1,5 +1,7 @@
 extends Spatial
 
+signal new_game
+
 var dice_sounds = [
 	preload("res://assets/audio/sound/dice_roll_1.mp3"),
 	preload("res://assets/audio/sound/dice_roll_2.mp3"),
@@ -14,10 +16,13 @@ var enemy_score: int = 0
 var opponent_ai = BaseAI.new()
 var initial_camera_pos
 var initial_camera_angle
+export var chips_needed_for_victory = 7
 
 const DICE_NUMBER_IDLE = "+"
 
 func _ready():
+	connect("new_game", self, "reset_game")
+	
 	$UI/Centered/Panel/LabelContainer/DiceNumberLabel.text = DICE_NUMBER_IDLE
 	initial_camera_pos = $GameCamera.transform.origin
 	initial_camera_angle = $GameCamera.rotation
@@ -45,6 +50,11 @@ func _process(_delta):
 		_roll_dice()
 	if Input.is_action_just_pressed("h_key"):
 		_toggle_help()
+	if Input.is_action_just_pressed("ui_cancel"):
+		if $WinLooseScreen.visible:
+			$WinLooseScreen.hide()
+		else:
+			$WinLooseScreen.emit_signal("popup_with_message", "MENU")
 			
 func _toggle_help():
 	if $HelpOverlay.visible:
@@ -63,14 +73,11 @@ func _roll_dice():
 			(die as Die).roll()
 
 func _finish_turn(reroll:bool):
-	# check if somebody won
-	
-	# decide who's next
-	# normally the opponent's turn is next except if reroll is true,
-	# the the current one can roll again.
-	#
-	# enable roll-button if player has to go next
-	# TODO: re-roll AI if enemy is next
+	if player_score == chips_needed_for_victory:
+		$WinLooseScreen.emit_signal("popup_with_message", "VICTORY")
+		
+	if enemy_score == chips_needed_for_victory:
+		$WinLooseScreen.emit_signal("popup_with_message", "DEFEAT")
 
 	# pass turn to the next team if current one didn't got a re-roll
 	if !reroll:
@@ -240,3 +247,17 @@ func is_valid_move(chip, number: int) -> bool:
 			return !$PlayerFields.get_children()[target_index].special
 
 	return true
+
+func reset_game():
+	player_score = 0
+	enemy_score = 0
+	
+	$"UI/Centered/Panel/Stones-Player".emit_signal("stones_changed", player_score)
+	$"UI/Centered/Panel/Stones-Opponent".emit_signal("stones_changed", enemy_score)
+
+	for chip in $PlayerChips.get_children():
+		chip.reset()
+	
+	for chip in $EnemyChips.get_children():
+		chip.reset()
+
