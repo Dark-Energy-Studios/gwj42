@@ -30,13 +30,16 @@ func _ready():
 		mesh = $EnemyMesh
 		mesh.show()
 
-	initial_position = mesh.global_transform
+	initial_position = self.global_transform
 
 func reset():
-	mesh.global_transform = initial_position
+	self.global_transform = initial_position
+	self.position = -1
+	set_sleeping(false)
 
-func move(target_position:Vector3):
-	mesh.global_transform.origin = target_position
+func move(target_index:int, target_position:Vector3):
+	self.global_transform.origin = target_position
+	self.position = target_index
 	set_sleeping(false)
 
 func _on_Chip_mouse_entered():
