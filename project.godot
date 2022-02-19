@@ -29,11 +29,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://components/Die/Die.gd"
 }, {
-"base": "Node",
-"class": "GameController",
-"language": "GDScript",
-"path": "res://components/GameController/GameController.gd"
-}, {
 "base": "BaseAI",
 "class": "TchiboAI",
 "language": "GDScript",
@@ -44,7 +39,6 @@ _global_script_class_icons={
 "BoardObject": "",
 "Chip": "",
 "Die": "",
-"GameController": "",
 "TchiboAI": ""
 }
 
