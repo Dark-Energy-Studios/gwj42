@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/visual/GWJ-Full-Logo-noBG.png" type="Texture" id=1]
 [ext_resource path="res://assets/visual/GWJ-42-Theme.png" type="Texture" id=2]
 [ext_resource path="res://assets/fonts/Redressed/Redressed-Regular.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://scripts/Menu.gd" type="Script" id=4]
+[ext_resource path="res://assets/audio/sound/menu_click_2.mp3" type="AudioStream" id=5]
 [ext_resource path="res://assets/audio/music/19_29.mp3" type="AudioStream" id=7]
 
 [sub_resource type="DynamicFont" id=3]
@@ -280,10 +281,18 @@ stream = ExtResource( 7 )
 volume_db = -15.0
 autoplay = true
 
+[node name="ButtonClickSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+
 [connection signal="timeout" from="CreditFadeOut" to="." method="_on_CreditFadeOut_timeout"]
+[connection signal="mouse_entered" from="Menu/List/Play" to="." method="_on_button_hover"]
 [connection signal="pressed" from="Menu/List/Play" to="." method="_on_Play_pressed"]
+[connection signal="mouse_entered" from="Menu/List/Credits" to="." method="_on_button_hover"]
 [connection signal="pressed" from="Menu/List/Credits" to="." method="_on_Credits_pressed"]
+[connection signal="mouse_entered" from="Menu/List/Rules" to="." method="_on_button_hover"]
 [connection signal="pressed" from="Menu/List/Rules" to="." method="_on_Rules_pressed"]
+[connection signal="mouse_entered" from="Menu/List/Quit" to="." method="_on_button_hover"]
 [connection signal="pressed" from="Menu/List/Quit" to="." method="_on_Quit_pressed"]
 [connection signal="gui_input" from="Credits" to="." method="_on_Credits_gui_input"]
+[connection signal="mouse_entered" from="Rules/GoHomeButton" to="." method="_on_button_hover"]
 [connection signal="pressed" from="Rules/GoHomeButton" to="." method="_on_GoHomeButton_pressed"]
