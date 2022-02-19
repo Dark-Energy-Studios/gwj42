@@ -20,7 +20,7 @@ func _ready():
 		mesh.show()
 
 func _on_Chip_mouse_entered():
-	if clickable and not hovered:
+	if clickable and not hovered and team == globals.Team.PLAYER:
 		mesh.global_transform.origin += Vector3(0, hover_height, 0)
 		set_sleeping(true)
 		hovered = true
