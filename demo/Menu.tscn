@@ -2,7 +2,7 @@
 
 [ext_resource path="res://demo/Menu.gd" type="Script" id=1]
 [ext_resource path="res://demo/assets/tetraherdon_dice.obj" type="ArrayMesh" id=2]
-[ext_resource path="res://demo/assets/19_29.mp3" type="AudioStream" id=3]
+[ext_resource path="res://assets/audio/music/19_29.mp3" type="AudioStream" id=3]
 
 [sub_resource type="Environment" id=1]
 background_mode = 2

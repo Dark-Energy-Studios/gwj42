@@ -1,0 +1,280 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://assets/visual/GWJ-Full-Logo-noBG.png" type="Texture" id=1]
+[ext_resource path="res://assets/visual/GWJ-42-Theme.png" type="Texture" id=2]
+[ext_resource path="res://assets/fonts/Redressed/Redressed-Regular.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://scripts/Menu.gd" type="Script" id=4]
+[ext_resource path="res://assets/audio/music/19_29.mp3" type="AudioStream" id=7]
+
+[sub_resource type="DynamicFont" id=3]
+size = 100
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 30
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=1]
+size = 33
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 3 )
+
+[node name="Menu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CreditFadeOut" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[node name="Menu" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.113725, 0.113725, 0.113725, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="Menu"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -403.5
+margin_top = 30.0
+margin_right = 403.5
+margin_bottom = 149.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "The Royal Game of Ur"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="List" type="VBoxContainer" parent="Menu"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -100.0
+margin_top = -67.0
+margin_right = 100.0
+margin_bottom = 67.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Play" type="Button" parent="Menu/List"]
+margin_right = 200.0
+margin_bottom = 42.0
+rect_min_size = Vector2( 200, 0 )
+custom_fonts/font = SubResource( 2 )
+text = "Play"
+
+[node name="Credits" type="Button" parent="Menu/List"]
+margin_top = 46.0
+margin_right = 200.0
+margin_bottom = 88.0
+rect_min_size = Vector2( 200, 0 )
+custom_fonts/font = SubResource( 2 )
+text = "Credits"
+
+[node name="Rules" type="Button" parent="Menu/List"]
+margin_top = 92.0
+margin_right = 200.0
+margin_bottom = 134.0
+rect_min_size = Vector2( 200, 0 )
+custom_fonts/font = SubResource( 2 )
+text = "Rules"
+
+[node name="Credits" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="BG" type="ColorRect" parent="Credits"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.113725, 0.113725, 0.113725, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Theme" type="TextureRect" parent="Credits"]
+visible = false
+margin_left = 337.0
+margin_top = 366.0
+margin_right = 687.0
+margin_bottom = 466.0
+texture = ExtResource( 2 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Credits"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -512.0
+margin_top = -300.0
+margin_right = 512.0
+margin_bottom = 300.0
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Entry" type="Label" parent="Credits/VBoxContainer"]
+margin_right = 1024.0
+margin_bottom = 81.0
+custom_colors/font_color = Color( 0.980392, 0.380392, 0.286275, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "
+An Entry for the 42."
+align = 1
+valign = 1
+
+[node name="Logo" type="TextureRect" parent="Credits/VBoxContainer"]
+margin_top = 85.0
+margin_right = 1024.0
+margin_bottom = 473.0
+size_flags_horizontal = 7
+size_flags_vertical = 7
+texture = ExtResource( 1 )
+stretch_mode = 4
+
+[node name="Member" type="Label" parent="Credits/VBoxContainer"]
+margin_top = 477.0
+margin_right = 1024.0
+margin_bottom = 600.0
+custom_colors/font_color = Color( 0.980392, 0.380392, 0.286275, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "created by 
+evilcookie, j0braun, Kjarrigan and Tch1bo
+"
+align = 1
+valign = 1
+
+[node name="Rules" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BG" type="ColorRect" parent="Rules"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.113725, 0.113725, 0.113725, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GoHomeButton" type="Button" parent="Rules"]
+anchor_left = 0.018
+anchor_top = 0.018
+anchor_right = 0.018
+anchor_bottom = 0.028
+margin_right = 12.0
+margin_bottom = 20.0
+text = "Back"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Rules"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -438.5
+margin_top = -280.5
+margin_right = 438.5
+margin_bottom = 280.5
+rect_pivot_offset = Vector2( -343, 198 )
+hint_tooltip = "rw.."
+custom_constants/separation = 20
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Rule1" type="Label" parent="Rules/VBoxContainer"]
+margin_right = 877.0
+margin_bottom = 39.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "2 players play against each other"
+valign = 1
+
+[node name="Rule2" type="Label" parent="Rules/VBoxContainer"]
+margin_top = 59.0
+margin_right = 877.0
+margin_bottom = 98.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "Each player owns 7 token"
+valign = 1
+
+[node name="Rule3" type="Label" parent="Rules/VBoxContainer"]
+margin_top = 118.0
+margin_right = 877.0
+margin_bottom = 199.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "Every token starts outside of the field, and first has to be moved
+inside"
+valign = 1
+
+[node name="Rule4" type="Label" parent="Rules/VBoxContainer"]
+margin_top = 219.0
+margin_right = 877.0
+margin_bottom = 300.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "Each player is allowed to roll their dice, and
+move one of the token at the start of their turn"
+valign = 1
+
+[node name="Rule5" type="Label" parent="Rules/VBoxContainer"]
+margin_top = 320.0
+margin_right = 877.0
+margin_bottom = 401.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "If a token lands on a field occupied by its opponent, the
+opponents token is getting reset"
+valign = 1
+
+[node name="Rule6" type="Label" parent="Rules/VBoxContainer"]
+margin_top = 421.0
+margin_right = 877.0
+margin_bottom = 502.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "There are 7 special fields (indicated by a flower). When a token lands on it,
+it is not able to get kicked out and it's owner is able to roll again"
+valign = 1
+
+[node name="Rule7" type="Label" parent="Rules/VBoxContainer"]
+margin_top = 522.0
+margin_right = 877.0
+margin_bottom = 561.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "The goal is to be the first one to get all of the token into the finish"
+valign = 1
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+volume_db = -15.0
+autoplay = true
+
+[connection signal="timeout" from="CreditFadeOut" to="." method="_on_CreditFadeOut_timeout"]
+[connection signal="pressed" from="Menu/List/Play" to="." method="_on_Play_pressed"]
+[connection signal="pressed" from="Menu/List/Credits" to="." method="_on_Credits_pressed"]
+[connection signal="pressed" from="Menu/List/Rules" to="." method="_on_Rules_pressed"]
+[connection signal="pressed" from="Rules/GoHomeButton" to="." method="_on_GoHomeButton_pressed"]
