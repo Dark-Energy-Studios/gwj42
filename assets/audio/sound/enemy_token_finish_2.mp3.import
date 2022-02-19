@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/enemy_token_finish_2.mp3-fb117f0ad6f05bc1fb8e0415b6fc9ff6.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/sound/enemy_token_finish_2.mp3"
+dest_files=[ "res://.import/enemy_token_finish_2.mp3-fb117f0ad6f05bc1fb8e0415b6fc9ff6.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

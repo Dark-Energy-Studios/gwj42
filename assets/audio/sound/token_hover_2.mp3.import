@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/token_hover_2.mp3-af7ea5f286a9fa0fd39a315c3339b6f7.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/sound/token_hover_2.mp3"
+dest_files=[ "res://.import/token_hover_2.mp3-af7ea5f286a9fa0fd39a315c3339b6f7.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

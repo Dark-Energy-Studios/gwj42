@@ -1,9 +1,9 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://components/Board/Board.tscn" type="PackedScene" id=1]
 [ext_resource path="res://components/Chip/Chip.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/TestLevel.gd" type="Script" id=3]
-[ext_resource path="res://assets/audio/music/heroic_loop.mp3" type="AudioStream" id=4]
+[ext_resource path="res://assets/audio/sound/player_token_finish_1.mp3" type="AudioStream" id=4]
 [ext_resource path="res://components/Die/Die.tscn" type="PackedScene" id=5]
 [ext_resource path="res://components/GameCamera/GameCamera.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/audio/sound/dice_roll_1.mp3" type="AudioStream" id=7]
@@ -20,8 +20,10 @@
 [ext_resource path="res://assets/visual/Die.png" type="Texture" id=18]
 [ext_resource path="res://assets/visual/Die_Hover.png" type="Texture" id=19]
 [ext_resource path="res://components/Field/Field.tscn" type="PackedScene" id=20]
-[ext_resource path="res://components/MusicPlayer/MusicPlayer.tscn" type="PackedScene" id=21]
+[ext_resource path="res://assets/audio/sound/enemy_token_finish_2.mp3" type="AudioStream" id=21]
 [ext_resource path="res://assets/audio/music/agressive_loop.mp3" type="AudioStream" id=22]
+[ext_resource path="res://assets/audio/music/heroic_loop.mp3" type="AudioStream" id=23]
+[ext_resource path="res://components/MusicPlayer/MusicPlayer.tscn" type="PackedScene" id=24]
 
 [sub_resource type="BoxShape" id=1]
 
@@ -257,12 +259,29 @@ fov = 70.0
 
 [node name="DiceSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
+bus = "Jingles"
 
 [node name="TurnSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
+bus = "Jingles"
 
 [node name="TokenSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 9 )
+bus = "Jingles"
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+volume_db = -10.0
+autoplay = true
+bus = "Music"
+
+[node name="PlayerChipFinished" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 4 )
+bus = "Buttons"
+
+[node name="EnemyChipFinished" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 21 )
+bus = "Buttons"
 
 [node name="RollButton" type="TextureButton" parent="."]
 anchor_left = 1.0
@@ -484,11 +503,11 @@ margin_right = 132.0
 margin_bottom = 64.0
 texture = ExtResource( 16 )
 
-[node name="MusicPlayer" parent="." instance=ExtResource( 21 )]
+[node name="MusicPlayer" parent="." instance=ExtResource( 24 )]
 tracks = {
 "agressive": ExtResource( 22 ),
 "default": ExtResource( 10 ),
-"heroic": ExtResource( 4 )
+"heroic": ExtResource( 23 )
 }
 volume_db = -10.0
 autoplay = true

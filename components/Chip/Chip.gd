@@ -42,6 +42,15 @@ func _on_Chip_mouse_entered():
 		mesh.global_transform.origin += Vector3(0, hover_height, 0)
 		set_sleeping(true)
 		hovered = true
+		
+		# play hover sound
+		var hover_sound = AudioStreamPlayer.new()
+		hover_sound.set_stream(globals.chip_hover_sound)
+		hover_sound.mix_target = AudioServer.get_bus_index("Buttons")
+		hover_sound.volume_db = -20
+		hover_sound.pitch_scale = 1
+		add_child(hover_sound)
+		hover_sound.play()
 
 func _process(_delta):
 	if Input.is_action_just_pressed("left_click") and clickable and hovered:

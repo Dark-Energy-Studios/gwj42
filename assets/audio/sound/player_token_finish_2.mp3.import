@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/player_token_finish_2.mp3-dd27010b4df1a243d28ecb91b1f4714a.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/sound/player_token_finish_2.mp3"
+dest_files=[ "res://.import/player_token_finish_2.mp3-dd27010b4df1a243d28ecb91b1f4714a.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0
