@@ -114,21 +114,23 @@ func _on_chip_clicked(chip):
 		return
 	
 	# move chip
-	var target_field = get_fields()["own"][target_index]
-	chip.move(target_index, target_field.global_transform.origin)
-	$TokenSound.play()
+	var turn_fields = get_fields()["own"]
+	for i in range(chip.position+1,target_index+1):
+		chip.move(target_index, turn_fields[i].global_transform.origin)
+		$TokenSound.play()
+		yield(get_tree().create_timer(.3), "timeout")
 	
 	# check if chip kicks out opponent chip
 	# early return on non-overlapping fields
 	if !within_range(target_index, 4, 10):
-		_finish_turn(target_field.special)
+		_finish_turn(turn_fields[target_index].special)
 		return
 		
 	for opponent_chip in get_chips()["opponent"]:
 		if within_range(opponent_chip.position, 4,11) && opponent_chip.position == target_index:
 			opponent_chip.reset()
 	
-	_finish_turn(target_field.special)
+	_finish_turn(turn_fields[target_index].special)
 
 func within_range(n:int, minimum:int, maximum:int) -> bool:
 	return n >= minimum && n <=maximum
