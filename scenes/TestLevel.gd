@@ -60,6 +60,8 @@ func _finish_turn(reroll:bool):
 		else:
 			current_team = globals.Team.PLAYER
 		
+	$UI/Centered/Panel/LabelContainer/TurnLabel.text = "Turn of %s" % globals.team_to_string(current_team)
+	
 	if current_team == globals.Team.PLAYER:
 		$RollButton.disabled = false
 	else:
