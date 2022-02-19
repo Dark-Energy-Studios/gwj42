@@ -1,4 +1,5 @@
 extends RigidBody
+class_name Chip
 
 signal clicked(chip)
 
@@ -37,13 +38,13 @@ func move(target_index:int, target_position:Vector3):
 	set_sleeping(false)
 
 func _on_Chip_mouse_entered():
-	if clickable and not hovered and team == globals.Team.PLAYER:
+	if clickable and not hovered:
 		mesh.global_transform.origin += Vector3(0, hover_height, 0)
 		set_sleeping(true)
 		hovered = true
 
 func _process(_delta):
-	if Input.is_action_just_pressed("left_click") and clickable and (hovered or (team == globals.Team.ENEMY)):
+	if Input.is_action_just_pressed("left_click") and clickable and hovered:
 		emit_signal("clicked", self)
 
 func _on_Chip_mouse_exited():

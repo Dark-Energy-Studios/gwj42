@@ -20,6 +20,11 @@ _global_script_classes=[ {
 "path": "res://components/Board/BoardObject.gd"
 }, {
 "base": "RigidBody",
+"class": "Chip",
+"language": "GDScript",
+"path": "res://components/Chip/Chip.gd"
+}, {
+"base": "RigidBody",
 "class": "Die",
 "language": "GDScript",
 "path": "res://components/Die/Die.gd"
@@ -37,6 +42,7 @@ _global_script_classes=[ {
 _global_script_class_icons={
 "BaseAI": "",
 "BoardObject": "",
+"Chip": "",
 "Die": "",
 "MusicPlayer": "",
 "TchiboAI": ""
