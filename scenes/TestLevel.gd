@@ -73,13 +73,22 @@ func _on_chip_clicked(chip):
 			chip.clickable = false
 	
 	print("clicked on " + str(chip))
-	var target_index = chip.position
+	var target_index = 0
+	var dice_number = 0
 	for die in $Dice.get_children():
-		if !die.is_sleeping(): return
-		target_index += die.number
+		dice_number += die.number
+
+	if chip.position == -1:
+		target_index = dice_number-1
+		print("move chip from start to %d -1 = %d" % [dice_number, target_index])
+	else:
+		target_index = chip.position + dice_number
+		print("move chip on board to %d + %d = %d" % [chip.position, dice_number, target_index])
+		
+	
 
 	# check if chip has finished
-	if target_index == $PlayerChips.get_child_count():
+	if target_index == $PlayerFields.get_child_count():
 		# remove stone
 		chip.queue_free()
 
@@ -95,16 +104,24 @@ func _on_chip_clicked(chip):
 	
 	# move chip
 	var target_field = get_fields()["own"][target_index]
-	chip.move(target_field.global_transform.origin)
+	chip.move(target_index, target_field.global_transform.origin)
 	$TokenSound.play()
 	
 	# check if chip kicks out opponent chip
+	# early return on non-overlapping fields
+	if !within_range(target_index, 4, 10):
+		_finish_turn(target_field.special)
+		return
+		
 	for opponent_chip in get_chips()["opponent"]:
-		if opponent_chip.position == target_index:
+		if within_range(opponent_chip.position, 4,11) && opponent_chip.position == target_index:
 			opponent_chip.reset()
 	
 	_finish_turn(target_field.special)
-	
+
+func within_range(n:int, minimum:int, maximum:int) -> bool:
+	return n >= minimum && n <=maximum
+
 func _on_dice_rolled():
 	# every dice will trigger this event, but only the last one passes
 	# the loop when every die is sleeping
