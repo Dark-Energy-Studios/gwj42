@@ -11,7 +11,7 @@ export (globals.Team) var current_team = globals.Team.PLAYER
 var player_score: int = 0
 var enemy_score: int = 0
 
-var opponent_ai = BaseAI.new()
+var opponent_ai = EvilcookieAI.new()
 var initial_camera_pos
 var initial_camera_angle
 
