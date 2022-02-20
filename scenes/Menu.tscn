@@ -222,9 +222,9 @@ anchor_bottom = 0.0
 margin_left = 250.0
 margin_right = 250.0
 margin_bottom = 500.0
-persons_name = "3vilc00kie"
-description = "couch potato"
-image = ExtResource( 13 )
+persons_name = "Evilcookie"
+description = "raging couch potato"
+image = ExtResource( 10 )
 
 [node name="Profile3" parent="AISelection/HBoxContainer" instance=ExtResource( 6 )]
 anchor_right = 0.0
@@ -324,7 +324,7 @@ margin_bottom = 600.0
 custom_colors/font_color = Color( 0.980392, 0.380392, 0.286275, 1 )
 custom_fonts/font = SubResource( 1 )
 text = "created by 
-evilcookie, j0braun, Kjarrigan and Tch1bo
+Evilcookie, j0braun, Kjarrigan and Tch1bo
 "
 align = 1
 valign = 1
