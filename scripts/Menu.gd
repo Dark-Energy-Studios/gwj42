@@ -31,6 +31,7 @@ func _on_GoHomeButton_pressed():
 	$ButtonClickSound.play()
 	$Rules.hide()
 	$Credits.hide()
+	$AISelection.hide()
 	$Menu.show()
 
 func _on_Quit_pressed():
@@ -69,4 +70,5 @@ func _on_challenged(profile: Profile):
 	}
 
 	globals.selected_opponent = opponents[profile.persons_name]
+	yield(get_tree().create_timer(.3), "timeout")
 	get_tree().change_scene("res://scenes/TestLevel.tscn")
