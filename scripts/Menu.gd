@@ -1,9 +1,11 @@
 extends Control
 
-var hover_sound = preload("res://assets/audio/sound/menu_click_1.mp3")
 
 func _ready():
-	hover_sound.loop = false
+	if globals.sound_muted:
+		$Menu/List/Sound.text = "Sound: off"
+	else:
+		$Menu/List/Sound.text = "Sound: on"
 
 func _on_CreditFadeOut_timeout():
 	$Credits.hide()
@@ -39,9 +41,20 @@ func _on_Quit_pressed():
 
 func _on_button_hover():
 	var music = AudioStreamPlayer.new()
-	music.set_stream(hover_sound)
+	music.set_stream(globals.button_hover_sound)
 	music.mix_target = AudioServer.get_bus_index("Buttons")
 	music.volume_db = -20
 	music.pitch_scale = 1
 	add_child(music)
 	music.play()
+
+
+func _on_Sound_pressed():
+	$ButtonClickSound.play()
+	globals.sound_muted = !globals.sound_muted
+	
+	AudioServer.set_bus_mute(0, globals.sound_muted)
+	if globals.sound_muted:
+		$Menu/List/Sound.text = "Sound: off"
+	else:
+		$Menu/List/Sound.text = "Sound: on"

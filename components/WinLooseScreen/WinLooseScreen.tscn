@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/fonts/Redressed/Redressed-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/fonts/buttons.tres" type="DynamicFont" id=2]
 [ext_resource path="res://components/WinLooseScreen/WinLooseScreen.gd" type="Script" id=3]
 [ext_resource path="res://assets/visual/TurnScreen.png" type="Texture" id=4]
+[ext_resource path="res://assets/audio/sound/menu_click_2.mp3" type="AudioStream" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 80
@@ -18,6 +19,11 @@ script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="ButtonClickSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+volume_db = -6.0
+bus = "Buttons"
 
 [node name="Panel" type="PanelContainer" parent="."]
 margin_left = 255.0
@@ -55,19 +61,31 @@ margin_right = 500.0
 margin_bottom = 146.0
 
 [node name="Retry" type="Button" parent="Panel/Rows/Buttons"]
-margin_right = 248.0
+margin_right = 162.0
 margin_bottom = 42.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 2 )
 text = "Play again"
 
+[node name="Sound" type="Button" parent="Panel/Rows/Buttons"]
+margin_left = 166.0
+margin_right = 328.0
+margin_bottom = 42.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 2 )
+text = "Sound: on"
+
 [node name="Menu" type="Button" parent="Panel/Rows/Buttons"]
-margin_left = 252.0
+margin_left = 332.0
 margin_right = 500.0
 margin_bottom = 42.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 2 )
 text = "Back to Menu"
 
+[connection signal="mouse_entered" from="Panel/Rows/Buttons/Retry" to="." method="_on_button_hover"]
 [connection signal="pressed" from="Panel/Rows/Buttons/Retry" to="." method="_on_Retry_pressed"]
+[connection signal="mouse_entered" from="Panel/Rows/Buttons/Sound" to="." method="_on_button_hover"]
+[connection signal="pressed" from="Panel/Rows/Buttons/Sound" to="." method="_on_Sound_pressed"]
+[connection signal="mouse_entered" from="Panel/Rows/Buttons/Menu" to="." method="_on_button_hover"]
 [connection signal="pressed" from="Panel/Rows/Buttons/Menu" to="." method="_on_Menu_pressed"]
