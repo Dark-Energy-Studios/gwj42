@@ -13,7 +13,7 @@ export (globals.Team) var current_team = globals.Team.PLAYER
 var player_score: int = 0
 var enemy_score: int = 0
 
-var opponent_ai = BaseAI.new()
+onready var opponent_ai = globals.selected_opponent.new()
 var initial_camera_pos
 var initial_camera_angle
 export var chips_needed_for_victory = 7
@@ -26,7 +26,6 @@ func _ready():
 	globals.first_game = false
 	
 	connect("new_game", self, "reset_game")
-	
 	$UI/Centered/Panel/LabelContainer/DiceNumberLabel.text = DICE_NUMBER_IDLE
 	initial_camera_pos = $GameCamera.transform.origin
 	initial_camera_angle = $GameCamera.rotation

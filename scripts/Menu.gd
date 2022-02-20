@@ -20,8 +20,8 @@ func _on_Play_pressed():
 	# play button sound and sleep for a bit to hear the full magnificence of the sound
 	$ButtonClickSound.play()
 	yield(get_tree().create_timer(.3), "timeout")
-	
-	get_tree().change_scene("res://scenes/TestLevel.tscn")
+
+	$AISelection.show()
 
 func _on_Rules_pressed():
 	$ButtonClickSound.play()
@@ -31,6 +31,7 @@ func _on_GoHomeButton_pressed():
 	$ButtonClickSound.play()
 	$Rules.hide()
 	$Credits.hide()
+	$AISelection.hide()
 	$Menu.show()
 
 func _on_Quit_pressed():
@@ -59,3 +60,15 @@ func _on_Sound_pressed():
 		$Menu/List/Sound.text = "Sound: off"
 	else:
 		$Menu/List/Sound.text = "Sound: on"
+
+func _on_challenged(profile: Profile):
+	var opponents = {
+		"Tch1b0": TchiboAI,
+		"3vilc00kie": EvilcookieAI,
+		"j0braun": JohnAI,
+		"Kjarrigan": KjarriganAI
+	}
+
+	globals.selected_opponent = opponents[profile.persons_name]
+	yield(get_tree().create_timer(.3), "timeout")
+	get_tree().change_scene("res://scenes/TestLevel.tscn")

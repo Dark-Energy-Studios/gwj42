@@ -6,7 +6,14 @@ var name = "Arth'Ur Dent"
 
 func _init():
 	pass
-	
+
+func get_chips_positions(chips) -> Array:
+	var positions := []
+	for chip in chips:
+		positions.append(chip.position)
+
+	return positions
+
 func make_move(dice_roll: int, ai_chips, player_chips, fields) -> void:
 	if ai_chips.size() > 0:
 		print_debug(ai_chips[0].position)

@@ -34,10 +34,25 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://components/AI/EvilcookieAI.gd"
 }, {
+"base": "BaseAI",
+"class": "JohnAI",
+"language": "GDScript",
+"path": "res://components/AI/JohnAI.gd"
+}, {
+"base": "BaseAI",
+"class": "KjarriganAI",
+"language": "GDScript",
+"path": "res://components/AI/KjarriganAI.gd"
+}, {
 "base": "Node",
 "class": "MusicPlayer",
 "language": "GDScript",
 "path": "res://components/MusicPlayer/MusicPlayer.gd"
+}, {
+"base": "Control",
+"class": "Profile",
+"language": "GDScript",
+"path": "res://ui/Profile.gd"
 }, {
 "base": "BaseAI",
 "class": "TchiboAI",
@@ -50,7 +65,10 @@ _global_script_class_icons={
 "Chip": "",
 "Die": "",
 "EvilcookieAI": "",
+"JohnAI": "",
+"KjarriganAI": "",
 "MusicPlayer": "",
+"Profile": "",
 "TchiboAI": ""
 }
 
