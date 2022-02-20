@@ -2,6 +2,7 @@ extends Node
 
 var button_hover_sound = preload("res://assets/audio/sound/menu_click_1.mp3")
 var chip_hover_sound = preload("res://assets/audio/sound/token_hover_1.mp3")
+var selected_opponent = BaseAI
 
 enum Team {
 	PLAYER

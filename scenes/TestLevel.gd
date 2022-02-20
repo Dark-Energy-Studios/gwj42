@@ -10,15 +10,19 @@ var dice_sounds = [
 
 export (globals.Team) var current_team = globals.Team.PLAYER
 
-var player_score: int = 6
-var enemy_score: int = 6
+var player_score: int = 0
+var enemy_score: int = 0
 
-var opponent_ai = BaseAI.new()
+onready var opponent_ai = globals.selected_opponent.new()
 var initial_camera_pos
 var initial_camera_angle
 export var chips_needed_for_victory = 7
 
 const DICE_NUMBER_IDLE = "+"
+
+# Avoid 'rolled' events on initializing the scene when the dice fall to the
+# ground and emit them. Just ignore them and unfreeze the 
+var ignore_dice_events:bool = true
 
 func _ready():
 	# show help only for the first game automatically
@@ -26,7 +30,6 @@ func _ready():
 	globals.first_game = false
 	
 	connect("new_game", self, "reset_game")
-	
 	$UI/Centered/Panel/LabelContainer/DiceNumberLabel.text = DICE_NUMBER_IDLE
 	initial_camera_pos = $GameCamera.transform.origin
 	initial_camera_angle = $GameCamera.rotation
@@ -49,9 +52,6 @@ func _input(event):
 		$HelpOverlay.hide()
 
 func _process(_delta):
-	# TODO: drop dice roll by key
-	if Input.is_action_just_pressed("r_key"):
-		_roll_dice()
 	if Input.is_action_just_pressed("h_key"):
 		_toggle_help()
 	if Input.is_action_just_pressed("ui_cancel"):
@@ -65,11 +65,12 @@ func _toggle_help():
 		$HelpOverlay.hide()
 	else:
 		$GameCamera.transform.origin = initial_camera_pos
-		$GameCamera.rotation = initial_camera_angle		
+		$GameCamera.rotation = initial_camera_angle
 		$HelpOverlay.show()	
 
 # trigger dice roll
 func _roll_dice():
+	ignore_dice_events = false
 	$RollButton.disabled = true
 		
 	play_dice_sound()
@@ -169,6 +170,7 @@ func within_range(n:int, minimum:int, maximum:int) -> bool:
 	return n >= minimum && n <=maximum
 
 func _on_dice_rolled():
+	if ignore_dice_events: return
 	# every dice will trigger this event, but only the last one passes
 	# the loop when every die is sleeping
 	var number = 0
@@ -250,7 +252,10 @@ func is_valid_move(chip, number: int) -> bool:
 	elif target_index > $PlayerFields.get_child_count():
 		# chip would 'overshot' goal
 		return false
-			
+	
+	# early return if target is outside of the shared fields. fixes  #53
+	if !within_range(target_index, 4, 11): return true
+	
 	# check if opponent chip is at the target index -> valid except field is special
 	for opponent_chip in turn_chips["opponent"]:
 		if opponent_chip.position == target_index:

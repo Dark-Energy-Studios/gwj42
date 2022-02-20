@@ -1,15 +1,19 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://assets/visual/GWJ-Full-Logo-noBG.png" type="Texture" id=1]
 [ext_resource path="res://assets/visual/GWJ-42-Theme.png" type="Texture" id=2]
 [ext_resource path="res://assets/fonts/Redressed/Redressed-Regular.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://scripts/Menu.gd" type="Script" id=4]
 [ext_resource path="res://assets/audio/sound/menu_click_2.mp3" type="AudioStream" id=5]
+[ext_resource path="res://ui/Profile.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/audio/music/19_29.mp3" type="AudioStream" id=7]
-
-[sub_resource type="DynamicFont" id=3]
-size = 100
-font_data = ExtResource( 3 )
+[ext_resource path="res://assets/visual/image.png" type="Texture" id=8]
+[ext_resource path="res://assets/fonts/buttons.tres" type="DynamicFont" id=9]
+[ext_resource path="res://assets/visual/unknown.png" type="Texture" id=10]
+[ext_resource path="res://assets/visual/JohnProfilePicture.png" type="Texture" id=11]
+[ext_resource path="res://assets/visual/TchiboProfilePicture.jpg" type="Texture" id=12]
+[ext_resource path="res://assets/visual/EvlicookieProfilePicture.png" type="Texture" id=13]
+[ext_resource path="res://assets/visual/KjarriganProfilePicture.png" type="Texture" id=14]
 
 [sub_resource type="DynamicFont" id=2]
 size = 30
@@ -23,6 +27,8 @@ font_data = ExtResource( 3 )
 [node name="Menu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_bottom = 3.0
+rect_scale = Vector2( 1, 0.995897 )
 script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -41,16 +47,45 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Background" type="TextureRect" parent="Menu"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 8 )
+expand = true
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Title" type="Label" parent="Menu"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -403.5
-margin_top = 30.0
-margin_right = 403.5
-margin_bottom = 149.0
+margin_left = -509.0
+margin_top = 3.0
+margin_right = 514.0
+margin_bottom = 178.0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_fonts/font = SubResource( 3 )
-text = "The Royal Game of Ur"
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 9 )
+text = "The ancient Game of Ur"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonBackground" type="TextureRect" parent="Menu"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -154.0
+margin_top = -121.0
+margin_right = 870.0
+margin_bottom = 599.0
+rect_scale = Vector2( 0.4, 0.45 )
+texture = ExtResource( 10 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -61,9 +96,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -100.0
-margin_top = -67.0
+margin_top = -53.0
 margin_right = 100.0
-margin_bottom = 67.0
+margin_bottom = 127.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -72,16 +107,32 @@ __meta__ = {
 margin_right = 200.0
 margin_bottom = 42.0
 rect_min_size = Vector2( 200, 0 )
+focus_mode = 1
+custom_colors/font_color_focus = Color( 0.32549, 0.32549, 0.32549, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0.32549, 0.32549, 0.32549, 1 )
+custom_colors/font_color_pressed = Color( 0.32549, 0.32549, 0.32549, 1 )
 custom_fonts/font = SubResource( 2 )
+action_mode = 0
+enabled_focus_mode = 1
 text = "Play"
+flat = true
 
 [node name="Credits" type="Button" parent="Menu/List"]
 margin_top = 46.0
 margin_right = 200.0
 margin_bottom = 88.0
 rect_min_size = Vector2( 200, 0 )
+focus_mode = 1
+custom_colors/font_color_focus = Color( 0.32549, 0.32549, 0.32549, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0.32549, 0.32549, 0.32549, 1 )
+custom_colors/font_color_pressed = Color( 0.32549, 0.32549, 0.32549, 1 )
 custom_fonts/font = SubResource( 2 )
+action_mode = 0
+enabled_focus_mode = 1
 text = "Credits"
+flat = true
 
 [node name="Rules" type="Button" parent="Menu/List"]
 visible = false
@@ -97,16 +148,111 @@ margin_top = 92.0
 margin_right = 200.0
 margin_bottom = 134.0
 rect_min_size = Vector2( 200, 0 )
+focus_mode = 1
+custom_colors/font_color_focus = Color( 0.32549, 0.32549, 0.32549, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0.32549, 0.32549, 0.32549, 1 )
+custom_colors/font_color_pressed = Color( 0.32549, 0.32549, 0.32549, 1 )
 custom_fonts/font = SubResource( 2 )
+action_mode = 0
 text = "Sound: on"
+flat = true
 
 [node name="Quit" type="Button" parent="Menu/List"]
 margin_top = 138.0
 margin_right = 200.0
 margin_bottom = 180.0
 rect_min_size = Vector2( 200, 0 )
+focus_mode = 1
+custom_colors/font_color_focus = Color( 0.32549, 0.32549, 0.32549, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0.32549, 0.32549, 0.32549, 1 )
+custom_colors/font_color_pressed = Color( 0.32549, 0.32549, 0.32549, 1 )
 custom_fonts/font = SubResource( 2 )
+action_mode = 0
+enabled_focus_mode = 1
 text = "Quit"
+flat = true
+
+[node name="AISelection" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="AISelection"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.0745098, 0.0745098, 0.0745098, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="AISelection"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -450.0
+margin_top = -250.0
+margin_right = 450.0
+margin_bottom = 250.0
+custom_constants/separation = 250
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Profile" parent="AISelection/HBoxContainer" instance=ExtResource( 6 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_bottom = 500.0
+persons_name = "Tch1b0"
+description = "watch your step"
+image = ExtResource( 12 )
+
+[node name="Profile2" parent="AISelection/HBoxContainer" instance=ExtResource( 6 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 250.0
+margin_right = 250.0
+margin_bottom = 500.0
+persons_name = "Evilcookie"
+description = "raging couch potato"
+image = ExtResource( 13 )
+
+[node name="Profile3" parent="AISelection/HBoxContainer" instance=ExtResource( 6 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 500.0
+margin_right = 500.0
+margin_bottom = 500.0
+persons_name = "j0braun"
+description = "peaceful mate"
+image = ExtResource( 11 )
+
+[node name="Profile4" parent="AISelection/HBoxContainer" instance=ExtResource( 6 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 750.0
+margin_right = 750.0
+margin_bottom = 500.0
+persons_name = "Kjarrigan"
+description = "fieldkeeper"
+image = ExtResource( 14 )
+
+[node name="GoHomeButton" type="Button" parent="AISelection"]
+anchor_left = 0.018
+anchor_top = 0.018
+anchor_right = 0.018
+anchor_bottom = 0.028
+margin_right = 12.0
+margin_bottom = 20.0
+text = "Back"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Credits" type="Control" parent="."]
 anchor_right = 1.0
@@ -171,7 +317,7 @@ margin_bottom = 600.0
 custom_colors/font_color = Color( 0.980392, 0.380392, 0.286275, 1 )
 custom_fonts/font = SubResource( 1 )
 text = "created by 
-evilcookie, j0braun, Kjarrigan and Tch1bo
+Evilcookie, j0braun, Kjarrigan and Tch1bo
 "
 align = 1
 valign = 1
@@ -307,6 +453,12 @@ bus = "Buttons"
 [connection signal="pressed" from="Menu/List/Sound" to="." method="_on_Sound_pressed"]
 [connection signal="mouse_entered" from="Menu/List/Quit" to="." method="_on_button_hover"]
 [connection signal="pressed" from="Menu/List/Quit" to="." method="_on_Quit_pressed"]
+[connection signal="challenged" from="AISelection/HBoxContainer/Profile" to="." method="_on_challenged"]
+[connection signal="challenged" from="AISelection/HBoxContainer/Profile2" to="." method="_on_challenged"]
+[connection signal="challenged" from="AISelection/HBoxContainer/Profile3" to="." method="_on_challenged"]
+[connection signal="challenged" from="AISelection/HBoxContainer/Profile4" to="." method="_on_challenged"]
+[connection signal="mouse_entered" from="AISelection/GoHomeButton" to="." method="_on_button_hover"]
+[connection signal="pressed" from="AISelection/GoHomeButton" to="." method="_on_GoHomeButton_pressed"]
 [connection signal="gui_input" from="Credits" to="." method="_on_Credits_gui_input"]
 [connection signal="mouse_entered" from="Rules/GoHomeButton" to="." method="_on_button_hover"]
 [connection signal="pressed" from="Rules/GoHomeButton" to="." method="_on_GoHomeButton_pressed"]
