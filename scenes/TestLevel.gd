@@ -20,6 +20,10 @@ export var chips_needed_for_victory = 7
 
 const DICE_NUMBER_IDLE = "+"
 
+# Avoid 'rolled' events on initializing the scene when the dice fall to the
+# ground and emit them. Just ignore them and unfreeze the 
+var ignore_dice_events:bool = true
+
 func _ready():
 	# show help only for the first game automatically
 	$HelpOverlay.visible = globals.first_game
@@ -66,6 +70,7 @@ func _toggle_help():
 
 # trigger dice roll
 func _roll_dice():
+	ignore_dice_events = false
 	$RollButton.disabled = true
 		
 	play_dice_sound()
@@ -165,6 +170,7 @@ func within_range(n:int, minimum:int, maximum:int) -> bool:
 	return n >= minimum && n <=maximum
 
 func _on_dice_rolled():
+	if ignore_dice_events: return
 	# every dice will trigger this event, but only the last one passes
 	# the loop when every die is sleeping
 	var number = 0

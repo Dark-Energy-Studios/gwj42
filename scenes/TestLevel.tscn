@@ -97,16 +97,16 @@ material/0 = SubResource( 7 )
 transform = Transform( 0.051203, 0, -0.998688, 0, 1, 0, 0.998688, 0, 0.051203, 0.120504, 1.23164, -5.93411 )
 
 [node name="Die-1" parent="Dice" instance=ExtResource( 5 )]
-transform = Transform( -0.0297884, 0.999556, 0, -0.999556, -0.0297884, 0, 0, 0, 1, 0.339648, 1.05737, 0.0174139 )
+transform = Transform( -0.0297884, 0.999556, 0, -0.999556, -0.0297884, 0, -1.16415e-10, 0, 1, 0.339648, 1.55999, 0.0174139 )
 
 [node name="Die-2" parent="Dice" instance=ExtResource( 5 )]
-transform = Transform( 0.48105, -0.521194, -0.704945, 0, 0.804096, -0.5945, 0.876693, 0.285984, 0.38681, 0, 0.892052, -1.83234 )
+transform = Transform( 0.48105, -0.521194, -0.704945, 0, 0.804096, -0.5945, 0.876693, 0.285984, 0.38681, -9.53674e-07, 1.39468, -1.83234 )
 
 [node name="Die-3" parent="Dice" instance=ExtResource( 5 )]
-transform = Transform( 0.497882, 0.853372, 0.154499, -2.68998e-08, -0.17815, 0.984003, 0.867245, -0.489918, -0.0886975, 0, 0.383462, 1.21631 )
+transform = Transform( 0.497882, 0.853372, 0.154499, -2.68998e-08, -0.17815, 0.984003, 0.867245, -0.489918, -0.0886975, 0, 0.886086, 1.21631 )
 
 [node name="Die-4" parent="Dice" instance=ExtResource( 5 )]
-transform = Transform( 0.608023, 0.289903, 0.739097, -0.355017, -0.733403, 0.579727, 0.710121, -0.614879, -0.343005, 0, 1.50644, 2.66003 )
+transform = Transform( 0.608023, 0.289903, 0.739097, -0.355017, -0.733403, 0.579727, 0.710121, -0.614879, -0.343005, 0, 2.00906, 2.66003 )
 
 [node name="PlayerChips" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.770211, 0 )
@@ -628,6 +628,7 @@ bus = "Jingles"
 
 [node name="TokenSound" type="AudioStreamPlayer" parent="Jingles"]
 stream = ExtResource( 9 )
+volume_db = -10.0
 bus = "Jingles"
 
 [node name="KickoutSound" type="AudioStreamPlayer" parent="Jingles"]
