@@ -10,8 +10,8 @@ var dice_sounds = [
 
 export (globals.Team) var current_team = globals.Team.PLAYER
 
-var player_score: int = 6
-var enemy_score: int = 6
+var player_score: int = 0
+var enemy_score: int = 0
 
 var opponent_ai = BaseAI.new()
 var initial_camera_pos
