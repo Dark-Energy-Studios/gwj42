@@ -70,5 +70,4 @@ func _on_challenged(profile: Profile):
 	}
 
 	globals.selected_opponent = opponents[profile.persons_name]
-	yield(get_tree().create_timer(.3), "timeout")
 	get_tree().change_scene("res://scenes/TestLevel.tscn")
