@@ -3,7 +3,7 @@ class_name TchiboAI
 
 
 func _init():
-	name = "Tch1b0"
+	self.name = "Tch1b0"
 
 func get_chips_positions(chips) -> Array:
 	var positions := []
