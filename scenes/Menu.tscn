@@ -209,7 +209,8 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_bottom = 500.0
 persons_name = "Tch1b0"
-description = "watch your step"
+description = "watch your step
+"
 image = ExtResource( 12 )
 
 [node name="Profile2" parent="AISelection/HBoxContainer" instance=ExtResource( 6 )]
@@ -229,7 +230,8 @@ margin_left = 500.0
 margin_right = 500.0
 margin_bottom = 500.0
 persons_name = "j0braun"
-description = "peaceful mate"
+description = "peaceful mate
+"
 image = ExtResource( 11 )
 
 [node name="Profile4" parent="AISelection/HBoxContainer" instance=ExtResource( 6 )]
@@ -239,7 +241,8 @@ margin_left = 750.0
 margin_right = 750.0
 margin_bottom = 500.0
 persons_name = "Kjarrigan"
-description = "fieldkeeper"
+description = "fieldkeeper
+"
 image = ExtResource( 14 )
 
 [node name="GoHomeButton" type="Button" parent="AISelection"]
