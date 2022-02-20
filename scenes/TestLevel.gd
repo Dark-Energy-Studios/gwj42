@@ -49,9 +49,6 @@ func _input(event):
 		$HelpOverlay.hide()
 
 func _process(_delta):
-	# TODO: drop dice roll by key
-	if Input.is_action_just_pressed("r_key"):
-		_roll_dice()
 	if Input.is_action_just_pressed("h_key"):
 		_toggle_help()
 	if Input.is_action_just_pressed("ui_cancel"):
@@ -65,7 +62,7 @@ func _toggle_help():
 		$HelpOverlay.hide()
 	else:
 		$GameCamera.transform.origin = initial_camera_pos
-		$GameCamera.rotation = initial_camera_angle		
+		$GameCamera.rotation = initial_camera_angle
 		$HelpOverlay.show()	
 
 # trigger dice roll
