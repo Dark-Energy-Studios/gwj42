@@ -518,14 +518,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ColorRect" type="ColorRect" parent="HelpOverlay"]
-margin_right = 1016.0
-margin_bottom = 600.0
-color = Color( 0.188235, 0.188235, 0.188235, 0.298039 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="1-Turn-and-Score" type="Label" parent="HelpOverlay"]
 margin_left = 418.0
 margin_top = 123.0
