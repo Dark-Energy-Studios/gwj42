@@ -247,7 +247,10 @@ func is_valid_move(chip, number: int) -> bool:
 	elif target_index > $PlayerFields.get_child_count():
 		# chip would 'overshot' goal
 		return false
-			
+	
+	# early return if target is outside of the shared fields. fixes  #53
+	if !within_range(target_index, 4, 11): return true
+	
 	# check if opponent chip is at the target index -> valid except field is special
 	for opponent_chip in turn_chips["opponent"]:
 		if opponent_chip.position == target_index:
