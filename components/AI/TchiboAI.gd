@@ -5,13 +5,6 @@ class_name TchiboAI
 func _init():
 	self.name = "Tch1b0"
 
-func get_chips_positions(chips) -> Array:
-	var positions := []
-	for chip in chips:
-		positions.append(chip.position)
-
-	return positions
-
 func make_move(dice_roll: int, ai_chips, player_chips, _fields):
 	# if the ai is able to kick a player-chip out, do it
 	for ai_chip in ai_chips:
