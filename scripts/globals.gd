@@ -12,3 +12,5 @@ func team_to_string(team: int) -> String:
 		Team.PLAYER: return "Player"
 		Team.ENEMY: return "Enemy"
 		_: return "Unknown"
+
+var first_game:bool = true

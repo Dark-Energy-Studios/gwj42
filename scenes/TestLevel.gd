@@ -21,6 +21,10 @@ export var chips_needed_for_victory = 7
 const DICE_NUMBER_IDLE = "+"
 
 func _ready():
+	# show help only for the first game automatically
+	$HelpOverlay.visible = globals.first_game
+	globals.first_game = false
+	
 	connect("new_game", self, "reset_game")
 	
 	$UI/Centered/Panel/LabelContainer/DiceNumberLabel.text = DICE_NUMBER_IDLE
@@ -255,15 +259,4 @@ func is_valid_move(chip, number: int) -> bool:
 	return true
 
 func reset_game():
-	player_score = 0
-	enemy_score = 0
-	
-	$"UI/Centered/Panel/Stones-Player".emit_signal("stones_changed", player_score)
-	$"UI/Centered/Panel/Stones-Opponent".emit_signal("stones_changed", enemy_score)
-
-	for chip in $PlayerChips.get_children():
-		chip.reset()
-	
-	for chip in $EnemyChips.get_children():
-		chip.reset()
-
+	get_tree().change_scene("res://scenes/TestLevel.tscn")
