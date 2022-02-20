@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/EvilcookieProfilePicture.png-7a564be3ba0f894dda2ce300f0845ebb.stex"
+path="res://.import/JohnProfilePicture.png-44fba0c65442d748483ddf64f5f3e3ce.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/visual/EvilcookieProfilePicture.png"
-dest_files=[ "res://.import/EvilcookieProfilePicture.png-7a564be3ba0f894dda2ce300f0845ebb.stex" ]
+source_file="res://assets/visual/JohnProfilePicture.png"
+dest_files=[ "res://.import/JohnProfilePicture.png-44fba0c65442d748483ddf64f5f3e3ce.stex" ]
 
 [params]
 

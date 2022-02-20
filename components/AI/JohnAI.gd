@@ -9,9 +9,10 @@ func make_move(dice_roll: int, ai_chips, player_chips, fields) -> void:
 		for other_chip in player_chips:
 			var my_pos = my_chip.position
 			var other_pos = other_chip.position
-			if my_pos < 4 or my_pos > 11: continue
+			if my_pos < 4 or my_pos > 11 or fields[my_pos].special: continue
 			if my_pos in [other_pos + 1, other_pos + 2, other_pos + 3]:
 				_trigger_move(my_chip)
+				return
 	
 	if get_chips_positions(ai_chips).count(-1) > 4:
 		for chip in ai_chips:
