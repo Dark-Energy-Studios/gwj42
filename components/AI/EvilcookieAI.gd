@@ -12,7 +12,7 @@ func make_move(dice_roll: int, ai_chips, player_chips, fields) -> void:
 			_trigger_move(chip)
 			return
 
-	# second priority: move away if players could kick you out
+	# second priority: kick players out in the first half of the board
 	for my_chip in ai_chips:
 		var my_next_pos = my_chip.position + dice_roll
 		if my_next_pos > 7: continue
