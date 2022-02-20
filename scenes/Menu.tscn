@@ -92,15 +92,24 @@ rect_min_size = Vector2( 200, 0 )
 custom_fonts/font = SubResource( 2 )
 text = "Rules"
 
-[node name="Quit" type="Button" parent="Menu/List"]
+[node name="Sound" type="Button" parent="Menu/List"]
 margin_top = 92.0
 margin_right = 200.0
 margin_bottom = 134.0
 rect_min_size = Vector2( 200, 0 )
 custom_fonts/font = SubResource( 2 )
+text = "Sound: on"
+
+[node name="Quit" type="Button" parent="Menu/List"]
+margin_top = 138.0
+margin_right = 200.0
+margin_bottom = 180.0
+rect_min_size = Vector2( 200, 0 )
+custom_fonts/font = SubResource( 2 )
 text = "Quit"
 
 [node name="Credits" type="Control" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
@@ -285,6 +294,7 @@ bus = "Music"
 
 [node name="ButtonClickSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
+volume_db = -6.0
 bus = "Buttons"
 
 [connection signal="timeout" from="CreditFadeOut" to="." method="_on_CreditFadeOut_timeout"]
@@ -294,6 +304,8 @@ bus = "Buttons"
 [connection signal="pressed" from="Menu/List/Credits" to="." method="_on_Credits_pressed"]
 [connection signal="mouse_entered" from="Menu/List/Rules" to="." method="_on_button_hover"]
 [connection signal="pressed" from="Menu/List/Rules" to="." method="_on_Rules_pressed"]
+[connection signal="mouse_entered" from="Menu/List/Sound" to="." method="_on_button_hover"]
+[connection signal="pressed" from="Menu/List/Sound" to="." method="_on_Sound_pressed"]
 [connection signal="mouse_entered" from="Menu/List/Quit" to="." method="_on_button_hover"]
 [connection signal="pressed" from="Menu/List/Quit" to="." method="_on_Quit_pressed"]
 [connection signal="gui_input" from="Credits" to="." method="_on_Credits_gui_input"]
