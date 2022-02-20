@@ -628,6 +628,7 @@ bus = "Jingles"
 
 [node name="TokenSound" type="AudioStreamPlayer" parent="Jingles"]
 stream = ExtResource( 9 )
+volume_db = -10.0
 bus = "Jingles"
 
 [node name="KickoutSound" type="AudioStreamPlayer" parent="Jingles"]
