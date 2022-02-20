@@ -213,9 +213,14 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_bottom = 500.0
 persons_name = "Tch1b0"
+<<<<<<< HEAD
 description = "just plays the 
 game to annoy you"
 image = ExtResource( 12 )
+=======
+description = "watch your step"
+image = ExtResource( 9 )
+>>>>>>> update descriptions
 
 [node name="Profile2" parent="AISelection/HBoxContainer" instance=ExtResource( 6 )]
 anchor_right = 0.0
@@ -224,8 +229,13 @@ margin_left = 250.0
 margin_right = 250.0
 margin_bottom = 500.0
 persons_name = "3vilc00kie"
+<<<<<<< HEAD
 description = "wants to occupy these neat special fields"
 image = ExtResource( 13 )
+=======
+description = "couch potato"
+image = ExtResource( 10 )
+>>>>>>> update descriptions
 
 [node name="Profile3" parent="AISelection/HBoxContainer" instance=ExtResource( 6 )]
 anchor_right = 0.0
@@ -234,8 +244,12 @@ margin_left = 500.0
 margin_right = 500.0
 margin_bottom = 500.0
 persons_name = "j0braun"
+<<<<<<< HEAD
 description = "avoids risks and does one step at a time"
 image = ExtResource( 11 )
+=======
+image = ExtResource( 8 )
+>>>>>>> update descriptions
 
 [node name="Profile4" parent="AISelection/HBoxContainer" instance=ExtResource( 6 )]
 anchor_right = 0.0
@@ -244,7 +258,12 @@ margin_left = 750.0
 margin_right = 750.0
 margin_bottom = 500.0
 persons_name = "Kjarrigan"
+<<<<<<< HEAD
 image = ExtResource( 14 )
+=======
+description = "has the need to put all of his token on the field at once"
+image = ExtResource( 11 )
+>>>>>>> update descriptions
 
 [node name="GoHomeButton" type="Button" parent="AISelection"]
 anchor_left = 0.018

@@ -6,7 +6,7 @@ func _init():
 
 func make_move(dice_roll, ai_chips, player_chips, fields):
 	# first priority: move chips into the safety zone
-	for chip in ai_chips:
+	for chip in ai_chips: 
 		if chip.position + dice_roll >= 12:
 			_trigger_move(chip)
 			return
