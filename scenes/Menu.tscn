@@ -1,15 +1,15 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://assets/visual/GWJ-Full-Logo-noBG.png" type="Texture" id=1]
 [ext_resource path="res://assets/visual/GWJ-42-Theme.png" type="Texture" id=2]
 [ext_resource path="res://assets/fonts/Redressed/Redressed-Regular.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://scripts/Menu.gd" type="Script" id=4]
 [ext_resource path="res://assets/audio/sound/menu_click_2.mp3" type="AudioStream" id=5]
+[ext_resource path="res://assets/visual/—Pngtree—hand-painted old three-dimensional khaki scroll_5346420.png" type="Texture" id=6]
 [ext_resource path="res://assets/audio/music/19_29.mp3" type="AudioStream" id=7]
-
-[sub_resource type="DynamicFont" id=3]
-size = 100
-font_data = ExtResource( 3 )
+[ext_resource path="res://assets/visual/image.png" type="Texture" id=8]
+[ext_resource path="res://assets/fonts/buttons.tres" type="DynamicFont" id=9]
+[ext_resource path="res://assets/visual/unknown.png" type="Texture" id=10]
 
 [sub_resource type="DynamicFont" id=2]
 size = 30
@@ -41,6 +41,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Image" type="Sprite" parent="Menu"]
+position = Vector2( 513, 307.562 )
+scale = Vector2( 0.346667, 0.306671 )
+texture = ExtResource( 8 )
+
 [node name="Title" type="Label" parent="Menu"]
 anchor_left = 0.5
 anchor_right = 0.5
@@ -49,11 +54,24 @@ margin_top = 30.0
 margin_right = 403.5
 margin_bottom = 149.0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_fonts/font = SubResource( 3 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 9 )
 text = "The Royal Game of Ur"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Unknown" type="Sprite" parent="Menu"]
+position = Vector2( 510, 335 )
+scale = Vector2( 0.346983, 0.386111 )
+texture = ExtResource( 10 )
+
+[node name="—Pngtree—hand-paintedOldThree-dimensionalKhakiScroll5346420" type="Sprite" parent="Menu"]
+visible = false
+position = Vector2( 503, 333 )
+scale = Vector2( 0.291667, 0.273333 )
+texture = ExtResource( 6 )
 
 [node name="List" type="VBoxContainer" parent="Menu"]
 anchor_left = 0.5
@@ -61,9 +79,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -100.0
-margin_top = -67.0
+margin_top = -42.0
 margin_right = 100.0
-margin_bottom = 67.0
+margin_bottom = 92.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -72,16 +90,32 @@ __meta__ = {
 margin_right = 200.0
 margin_bottom = 42.0
 rect_min_size = Vector2( 200, 0 )
+focus_mode = 1
+custom_colors/font_color_focus = Color( 0.32549, 0.32549, 0.32549, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0.32549, 0.32549, 0.32549, 1 )
+custom_colors/font_color_pressed = Color( 0.32549, 0.32549, 0.32549, 1 )
 custom_fonts/font = SubResource( 2 )
+action_mode = 0
+enabled_focus_mode = 1
 text = "Play"
+flat = true
 
 [node name="Credits" type="Button" parent="Menu/List"]
 margin_top = 46.0
 margin_right = 200.0
 margin_bottom = 88.0
 rect_min_size = Vector2( 200, 0 )
+focus_mode = 1
+custom_colors/font_color_focus = Color( 0.32549, 0.32549, 0.32549, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0.32549, 0.32549, 0.32549, 1 )
+custom_colors/font_color_pressed = Color( 0.32549, 0.32549, 0.32549, 1 )
 custom_fonts/font = SubResource( 2 )
+action_mode = 0
+enabled_focus_mode = 1
 text = "Credits"
+flat = true
 
 [node name="Rules" type="Button" parent="Menu/List"]
 visible = false
@@ -97,6 +131,11 @@ margin_top = 92.0
 margin_right = 200.0
 margin_bottom = 134.0
 rect_min_size = Vector2( 200, 0 )
+focus_mode = 1
+custom_colors/font_color_focus = Color( 0.32549, 0.32549, 0.32549, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0.32549, 0.32549, 0.32549, 1 )
+custom_colors/font_color_pressed = Color( 0.32549, 0.32549, 0.32549, 1 )
 custom_fonts/font = SubResource( 2 )
 text = "Sound: on"
 
@@ -106,9 +145,13 @@ margin_right = 200.0
 margin_bottom = 180.0
 rect_min_size = Vector2( 200, 0 )
 custom_fonts/font = SubResource( 2 )
+action_mode = 0
+enabled_focus_mode = 1
 text = "Quit"
+flat = true
 
 [node name="Credits" type="Control" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {

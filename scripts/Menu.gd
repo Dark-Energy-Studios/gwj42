@@ -14,6 +14,7 @@ func _on_Credits_pressed():
 	$ButtonClickSound.play()
 	$Credits.show()
 	$CreditFadeOut.start(5)
+	$Menu/List/Credits.release_focus()
 
 func _on_Play_pressed():
 	# play button sound and sleep for a bit to hear the full magnificence of the sound
