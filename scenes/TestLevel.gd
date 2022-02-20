@@ -10,8 +10,8 @@ var dice_sounds = [
 
 export (globals.Team) var current_team = globals.Team.PLAYER
 
-var player_score: int = 0
-var enemy_score: int = 0
+var player_score: int = 6
+var enemy_score: int = 6
 
 var opponent_ai = BaseAI.new()
 var initial_camera_pos
@@ -44,7 +44,7 @@ func _input(event):
 	if (event is InputEventKey or event is InputEventMouseButton) and event.pressed:
 		$HelpOverlay.hide()
 
-func _process(_delta):	
+func _process(_delta):
 	# TODO: drop dice roll by key
 	if Input.is_action_just_pressed("r_key"):
 		_roll_dice()
@@ -74,10 +74,16 @@ func _roll_dice():
 
 func _finish_turn(reroll:bool):
 	if player_score == chips_needed_for_victory:
+		$Jingles/PlayerWon.play()
+		$MusicPlayer.play("heroic")
 		$WinLooseScreen.emit_signal("popup_with_message", "VICTORY")
+		return
 		
 	if enemy_score == chips_needed_for_victory:
+		$Jingles/EnemyWon.play()
+		$MusicPlayer.play("agressive")
 		$WinLooseScreen.emit_signal("popup_with_message", "DEFEAT")
+		return
 
 	# pass turn to the next team if current one didn't got a re-roll
 	if !reroll:
