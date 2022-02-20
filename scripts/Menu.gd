@@ -64,7 +64,7 @@ func _on_Sound_pressed():
 func _on_challenged(profile: Profile):
 	var opponents = {
 		"Tch1b0": TchiboAI,
-		"3vilc00kie": EvilcookieAI,
+		"Evilcookie": EvilcookieAI,
 		"j0braun": JohnAI,
 		"Kjarrigan": KjarriganAI
 	}
